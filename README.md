@@ -28,4 +28,4 @@
 
 ### Sprints
 
-* [21/10 - 01/11](https://github.com/dokabdou/projet_conduite_proj/Sprint0.md): [Tâches](https://github.com/dokabdou/projet_conduite_proj/Task0.md) 
+* [21/10 - 01/11](Sprint0.md): [Tâches](Task0.md) 

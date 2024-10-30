@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Project</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Project Details</h1>
+    <h2 th:text="${project.name}"></h2>
+    <p th:text="${project.description}"></p>
+    <button onclick="location.href='/'">Back to Dashboard</button>
+</body>
+</html>

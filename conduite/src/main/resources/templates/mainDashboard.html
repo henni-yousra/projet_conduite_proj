@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+<body>
+    <h1>Main Dashboard</h1>
+
+    <h2>App Users</h2>
+    <ul>
+        <th:block th:each="appUser : ${appUsers}">
+            <li th:text="${appUser.name} + ' - ' + ${appUser.email}"></li>
+        </th:block>
+    </ul>
+
+    <h2>Projects</h2>
+    <ul>
+        <th:block th:each="project : ${projects}">
+            <li th:text="${project.name} + ' - ' + ${project.description}"></li>
+        </th:block>
+    </ul>
+
+    <form action="/main/addAppUser" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <button type="submit">Add AppUser</button>
+    </form>
+
+    <form action="/main/addProject" method="POST">
+        <input type="text" name="name" placeholder="Project Name" required>
+        <input type="text" name="description" placeholder="Project Description" required>
+        <button type="submit">Add Project</button>
+    </form>
+</body>
+</html>

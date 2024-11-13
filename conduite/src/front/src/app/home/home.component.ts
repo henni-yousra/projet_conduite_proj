@@ -1,10 +1,11 @@
-import { Component, EventEmitter, inject, model, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, model, Output, signal } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButton } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ProjectsCardComponent } from '../projects-card/projects-card.component'
 import { CreateProjectDialogComponent, ProjectDialogData } from '../create-project-dialog/create-project-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Project } from '../model/projet';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+  @Input() projects!: Project[];
+
   readonly dialog = inject(MatDialog);
 
   openCreateProjectDialog(): void {

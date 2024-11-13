@@ -1,13 +1,10 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButton} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { Output, EventEmitter } from '@angular/core';
-
-export interface ProjectTile {
-  text: string;
-}
+import { Project } from '../model/projet';
 
 @Component({
   selector: 'app-projects-card',
@@ -19,12 +16,7 @@ export interface ProjectTile {
 })
 export class ProjectsCardComponent 
 {
-  projectTiles: ProjectTile[] = [
-    {text: 'One'},
-    {text: 'Two'},
-    {text: 'Three'},
-    {text: 'Four'}
-  ];
+  @Input() projects!: Project[];
 
   @Output() createProject = new EventEmitter();
 }

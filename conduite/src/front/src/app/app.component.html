@@ -2,7 +2,7 @@
   <div class="content">   
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
-      <app-home (createProject)="onCreateProject($event)"></app-home>
+      <app-home [projects]="projects" (createProject)="onCreateProject($event)"></app-home>
   </div>
 </main>
 

@@ -4,7 +4,7 @@
     </mat-card-header>
     <mat-card-content>
         <mat-grid-list cols="2" rowHeight="2:1">
-            @for (tile of projectTiles; track tile) {
+            @for (tile of projects; track tile) {
                 <mat-grid-tile>{{tile.text}}</mat-grid-tile>
               }
         </mat-grid-list>          

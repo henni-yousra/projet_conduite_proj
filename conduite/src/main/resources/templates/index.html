@@ -24,5 +24,15 @@
     </th:block>
   </ul>
   <button onclick="location.href='/projects/addProject'">Create Project</button>
+
+  <h1>App Users</h1>
+  <ul>
+    <th:block th:each="appUser : ${appUsers}">
+      <li>
+        <span th:text="${appUser.name}"></span>
+      </li>
+    </th:block>
+  </ul>
+  <button onclick="location.href='/appusers/addUser'">Add User</button>
 </body>
 </html>

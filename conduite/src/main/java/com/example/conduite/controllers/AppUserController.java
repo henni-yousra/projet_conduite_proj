@@ -49,11 +49,13 @@ public class AppUserController {
     
     //@PostMapping("/addUser")
     @Transactional
-    public ResponseEntity<String> addAppUser(String name, String email) {
+    public ResponseEntity<String> addAppUser(String name, String email, String role) {
         System.out.println("Adding a new person to the table...");
         // Add person to the database
         AppUser appUser = new AppUser(name,email);
-        appUserRepo.save(appUser);
+        System.out.println("--before db");
+        //appUserRepo.save(appUser); // TODO : this line was causing problems, without it the code runs but it is needed to send the data to the mainController
+        System.out.println("--going to db--");
         appUserService.addPersonToDatabase(name, email);
         System.out.println("Person added to the database");
         return ResponseEntity.status(HttpStatus.CREATED).body("Person added successfully");

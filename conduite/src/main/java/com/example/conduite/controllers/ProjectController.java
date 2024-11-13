@@ -37,8 +37,9 @@ public class ProjectController {
 
     @PostConstruct
     public void init() {
-        // Delete all persons when the application starts
+        // Delete all projects when the application starts
         projectRepo.deleteAll();
+        projectService.clearTable();
         System.out.println("All projects have been deleted.");
     }
 
@@ -47,12 +48,11 @@ public class ProjectController {
         return projectRepo.findAll();  // Fetch all Projects from the database
     }
 
-
     //@PostMapping("/addProject")
     @Transactional
     public ResponseEntity<String> addProject(String name, String description) {
         System.out.println("Adding a new project to the table...");
-        // Add person to the database
+        // Add project to the database
         Project project = new Project(name, description);
         projectRepo.save(project);
         System.out.println("--going to db--");

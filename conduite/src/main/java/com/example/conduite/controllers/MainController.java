@@ -28,6 +28,7 @@ public class MainController {
     private List<Project> projects = new ArrayList<>();
 
     public MainController() {
+        
     }
 
     @GetMapping({"/", "/index"})
@@ -43,10 +44,16 @@ public class MainController {
         return "projects/addProject";
     }
 
+    @GetMapping("/appusers/addUser")
+    public String createAppUserForm() {
+        // creates the createAppUser HTML page
+        return "appusers/addUser";
+    }
+
     // Delegates creating a new AppUser to the AppUserController
-    @PostMapping("/addAppUser")
-    public String addAppUser(@RequestParam String name, @RequestParam String email) {
-        appUserController.addAppUser(name, email);  // Calls method from AppUserController
+    @PostMapping("/appusers/addUser")
+    public String addAppUser(@RequestParam String name, @RequestParam String email, @RequestParam String role) {
+        appUserController.addAppUser(name, email, role);  // Calls method from AppUserController
         return "redirect:/";  // Redirect back to the main dashboard
     }
 

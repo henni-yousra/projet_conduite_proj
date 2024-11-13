@@ -1,0 +1,12 @@
+.card {
+    max-width: 45%;
+    width: 40vw;
+  }
+  
+  .card-footer {
+    padding: 16px;
+  }
+
+  mat-grid-tile {
+    background: lightblue;
+  }

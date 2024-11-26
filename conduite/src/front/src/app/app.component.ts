@@ -1,9 +1,9 @@
 import { Component, Directive, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ConfigService } from './config.service';
 import { HttpClient } from '@angular/common/http';
 import { Project } from './model/projet';
+import { RequestService } from './request.service';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +11,11 @@ import { Project } from './model/projet';
   imports: [RouterOutlet, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers:[ConfigService]
+  providers:[RequestService]
 })
 export class AppComponent implements OnInit {
-  http: HttpClient;
 
-  constructor(private config: ConfigService) 
-  { 
-    this.http = config.http;
-  }
+  constructor(private reqSvc: RequestService) {}
 
   title = 'front';
 
@@ -27,28 +23,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit()
   {
-    this.http.get("projects").subscribe((data: any) => 
-      {
-        let res : Project[] = []; 
-        const projects_data = data["_embedded"]["projects"];
-
-        for(const proj of projects_data)
-        {
-          res.push({text: proj.name, description: proj.description})
-        }
-        
-        this.projects = res;
-      });
+    this.reqSvc.getProjects().then((res) => this.projects = res);
   }
 
-  onCreateProject(projectName: string) {
-
-    let form = new FormData();
-    form.append("name", projectName);
-    form.append("description", projectName);
-
-    this.http.post("projects/addProject", form).subscribe(
-      (res) => console.log(res)
-    );
+  onCreateProject(projectName: string) 
+  {
+    this.reqSvc.createProject(projectName);
   }
 }

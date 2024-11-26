@@ -29,3 +29,15 @@
 ### Sprints
 
 * [21/10 - 01/11](Sprint0.md): [Tâches](Task0.md) 
+
+### Dev
+
+Running the spring server:
+```
+./mvnw spring-boot:run
+```
+Running the angular front:
+```
+cd src/front
+ng serve
+```

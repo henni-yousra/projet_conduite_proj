@@ -10,3 +10,8 @@
   mat-grid-tile {
     background: lightblue;
   }
+
+  mat-divider
+  {
+    margin: 1rem;
+  }

@@ -2,6 +2,7 @@
     <mat-card-header>
       <mat-card-title>Latest projects</mat-card-title>
     </mat-card-header>
+    <mat-divider></mat-divider>
     <mat-card-content>
         <mat-grid-list cols="2" rowHeight="2:1">
             @for (tile of projects; track tile) {
@@ -10,7 +11,7 @@
         </mat-grid-list>          
     </mat-card-content>
     <mat-card-footer class="card-footer">
-    <button mat-fab (click)="createProject.emit()">
+    <button mat-icon-button (click)="createProject.emit()">
         <mat-icon>add</mat-icon>
     </button>
     </mat-card-footer>

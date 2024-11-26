@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "appuser")
+@Table(name = "appuser", schema = "dbConduiteProj")
 public class AppUser {
     //@Id
     //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_seq")

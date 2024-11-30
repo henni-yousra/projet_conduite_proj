@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "appuser", schema = "dbConduiteProj")
+@Table(name = "appuser", schema = "dbconduiteproj")
 public class AppUser {
     //@Id
     //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_seq")
@@ -29,15 +29,19 @@ public class AppUser {
     @Column(name = "email")
     private String email;
 
-    /* @Column(name = "userrole")
-    private String role; */
+    @Column(name = "role")
+    private String role;
+
+    @Column(name = "password")
+    private String password;
 
     public AppUser() {}
 
-    public AppUser(String name, String email/* , String role */) {
+    public AppUser(String name, String email , String role, String password) {
         this.name = name;
         this.email = email;
-        //this.role = role;
+        this.role = role;
+        this.password = password;
     }
 
     /* public int getId() {
@@ -52,8 +56,7 @@ public class AppUser {
         return email;
     }
 
-    /* public String getRole() {
+    public String getRole() {
         return role;
     }
- */
 }

@@ -5,10 +5,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.conduite.entities.Project;
@@ -38,27 +38,37 @@ public class ProjectController {
     @PostConstruct
     public void init() {
         // Delete all projects when the application starts
-        projectRepo.deleteAll();
-        projectService.clearTable();
+        //projectRepo.deleteAll();
+        //projectService.clearTable();
         System.out.println("All projects have been deleted.");
     }
 
-    //@GetMapping("/add")
+    @GetMapping("")
     public List<Project> getAllProjects() {
+        //http://localhost:5000/projects/viewProjects
         return projectRepo.findAll();  // Fetch all Projects from the database
+    }
+
+    //@GetMapping("")
+    public Project getProjectById(@RequestParam Long id) {
+        Project project = projectRepo.getReferenceById(id);
+        System.out.println("Project found: " + project.getName());
+        return project;
     }
 
     //@PostMapping("/addProject")
     @Transactional
-    public ResponseEntity<String> addProject(String name, String description) {
+    public Project addProject(@RequestParam String name, @RequestParam String description) {
         System.out.println("Adding a new project to the table...");
-        // Add project to the database
         Project project = new Project(name, description);
         projectRepo.save(project);
-        System.out.println("--going to db--");
-        projectService.addProjectToDatabase(name, description);
-        System.out.println("Project added to the database");
-        return ResponseEntity.status(HttpStatus.CREATED).body("Project added successfully");
+        return project;
     }
 
+/*     @PostMapping("/deleteProject/{id}")
+    @Transactional
+    public String deleteProject(@PathVariable Long id) {
+        projectRepo.deleteById(id);
+        return "redirect:/index";
+    } */
 }

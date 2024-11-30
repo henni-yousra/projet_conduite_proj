@@ -1,9 +1,13 @@
 package com.example.conduite.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.conduite.entities.Project;
+import com.example.conduite.repos.ProjectRepo;
 
 @Service
 public class ProjectService {
@@ -12,6 +16,13 @@ public class ProjectService {
     @Autowired
     public void setTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Autowired
+    private ProjectRepo projectRepository;
+
+    public Project getProjectById(Long projId) {
+        return projectRepository.findById(projId).orElseThrow(() -> new ResourceNotFoundException("Project not found"));
     }
 
     @Transactional

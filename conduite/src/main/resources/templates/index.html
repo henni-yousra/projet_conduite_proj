@@ -1,38 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+    
 </head>
 <body>
-  <h1>Project Dashboard</h1>
-  <ul>
-    <th:block th:each="project, iterStat : ${projects}">
-      <li>
-        <span th:text="${project.name}"></span>
-        <!--TODO: Fix view and edit buttons:-->
-        <!-- View Button -->
-        <button class="view" style="margin-left: 5px;">View</button>
-        <!-- Edit Button -->
-        <button class="edit" style="margin-left: 5px;">Edit</button>
-        <!-- Delete Button -->
-        <form th:action="@{/projects/delete/__${iterStat.index}__}" method="post" style="display:inline;">
-          <button class="del" type="submit" style="margin-left: 5px;">Delete</button>
-        </form>
-      </li>
-    </th:block>
-  </ul>
-  <button onclick="location.href='/projects/addProject'">Create Project</button>
+    <h1>Project Dashboard</h1>
+    <ul>
+        <th:block th:each="project : ${projects}">
+            <li>
+                <span th:text="${project.name}"></span>
+                <!-- View Button -->
+                <a th:href="@{/viewProject/{id}(id=${project.id})}" class="view" style="margin-left: 5px;">View</a>
+                <!-- Delete Button -->
+                <button class="del" type="submit" style="margin-left: 5px;">Delete</button>
+            </li>
+        </th:block>
+    </ul>
+    <button onclick="location.href='/projects/addProject'">Create Project</button>
 
-  <h1>App Users</h1>
-  <ul>
-    <th:block th:each="appUser : ${appUsers}">
-      <li>
-        <span th:text="${appUser.name}"></span>
-      </li>
-    </th:block>
-  </ul>
-  <button onclick="location.href='/appusers/addUser'">Add User</button>
+    <h1>App Users</h1>
+    <ul>
+        <th:block th:each="appUser : ${appUsers}">
+            <li>
+                <span th:text="${appUser.name}"></span>
+                <!-- View Button -->
+                <a th:href="@{/viewUser/{id}(id=${appUser.id})}" class="view" style="margin-left: 5px;">View</a>
+                <!-- Delete Button -->
+                <button class="del" type="submit" style="margin-left: 5px;">Delete</button>
+            </li>
+        </th:block>
+    </ul>
+    <button onclick="location.href='/appusers/addUser'">Add User</button>
 </body>
 </html>

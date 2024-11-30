@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.example.conduite.entities.AppUser;
 
 @Repository
-public interface AppUserRepo extends JpaRepository<AppUser, Integer> {
+public interface AppUserRepo extends JpaRepository<AppUser, Long> {
 }

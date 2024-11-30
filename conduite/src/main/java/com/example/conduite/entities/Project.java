@@ -1,22 +1,24 @@
 package com.example.conduite.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "project", schema = "dbConduiteProj")
+@Table(name = "project", schema = "dbconduiteproj")
 public class Project {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_seq")
-    @SequenceGenerator(name = "project_seq", sequenceName = "project_seq", allocationSize = 1)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "proj_id")
     private int id;
 
@@ -25,6 +27,13 @@ public class Project {
 
     @Column(name = "projdesc")
     private String description;
+
+    @ManyToMany
+    @JoinTable(
+      name = "project_user", 
+      joinColumns = @JoinColumn(name = "proj_id"), 
+      inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<AppUser> members;  // List of users assigned to the project
 
     public Project() {}
 
@@ -43,6 +52,10 @@ public class Project {
 
     public String getDescription() {
         return description;
+    }
+
+    public List<AppUser> projectMembers() {
+        return members;
     }
 
     public void setName(String name) {

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${project.name}"></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class = "navbar-nav">
+        <li class = "nav-item">
+            <a>Besoins</a>
+        </li>
+        <li class = "nav-item">
+            <a>Taches</a>
+        </li>
+        <li class = "nav-item">
+            <a>Documentation</a>
+        </li>
+        <li class = "nav-item">
+            <a>Release</a>
+        </li>
+        <li class = "nav-item">
+            <a>Sprints</a>
+        </li>
+    </ul>
+  </nav>
+<body>
+    <h1>Project Details</h1>
+    <h2 th:text="${project.name}"></h2>
+    <p th:text="${project.description}"></p>
+    <!--table with two cols: leader and members-->
+    <table>
+        <tr>
+            <th>Leader</th>
+            <th>Members</th>
+        </tr>
+        <!-- <tr>
+            <td th:text="${project.leader.name}"></td>
+            <td>
+                <ul>
+                    <th:block th:each="programmer : ${project.programmers}">
+                        <li th:text="${programmer.name}"></li>
+                    </th:block>
+                </ul>
+            </td>
+        </tr> -->
+    <!--2 buttons : add leader, add prog-->
+    <!--TODO-->
+    <button onclick="location.href='/projects/addLeader/{id}'">Add Leader</button>
+    <button onclick="location.href='/projects/addProgrammer/{id}'">Add Programmer</button>
+    <button onclick="location.href='/'">Back to Dashboard</button>
+</body>
+</html>

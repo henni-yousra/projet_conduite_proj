@@ -1,0 +1,136 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+
+}
+/* Underline the "already have an account" link */
+.link {
+  color: var(--bright-blue); /* Optional: Change text color */
+  text-decoration: underline; /* Add underline to the text */
+  cursor: pointer; /* Show pointer cursor for clickable text */
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Change color on hover */
+.link:hover {
+  color: var(--electric-violet); /* Optional: Hover effect */
+}
+
+
+/* Ensure html and body take up full height */
+html, body {
+  height: 100%;  /* Make sure the body and html take the full height of the page */
+  margin: 0;     /* Remove default margin */
+  display: flex; /* Enable flexbox layout on body */
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f8;
+}
+
+/* Container (Login Box) */
+div {
+  background-color: #fff;
+  width: 100%;
+
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Header */
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label Styling */
+label {
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Input Fields Styling */
+input {
+  padding: 12px 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #e7f3ff;
+}
+
+/* Button Styling */
+button {
+  padding: 12px 20px;
+  background-color: rgb(73, 73, 73);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(  37,37,37);
+}
+
+/* Hover Effect */
+button:focus {
+  outline: none;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+/* Input Focus Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  div {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

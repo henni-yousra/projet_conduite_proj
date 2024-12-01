@@ -37,6 +37,10 @@ Cette version initiale pose les bases essentielles du projet, offrant une struct
 - La structure de la base de données est en place, mais certaines fonctionnalités avancées restent à implémenter dans les versions futures.  
 
 
+![Login](/assests/login1.png)
+![Registration](/assests/register1.png)
+![Dashboard](/assests/dashboard1.png)
+![Project creation](/assests/createProject1.png)
 
 ---
 

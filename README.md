@@ -41,10 +41,10 @@ Un outil pour gérer la production logicielle en suivant la méthode Scrum.
 
 ### Sprints
 
-- [21/10 - 03/11](Sprint0.md) : [Tâches](Task0.md)
-- [04/11 - 18/11](Sprint1.md) : [Tâches](Task1.md)
-- [19/11 - 01/12](Sprint2.md) : [Tâches](Task2.md)
-- [01/12 - 15/12](Sprint3.md) : [Tâches](Task3.md)
+- sprint 0:  [21/10 - 03/11](Sprint0.md) : [Tâches](Task0.md)
+- sprint 1: [04/11 - 18/11](Sprint1.md) : [Tâches](Task1.md)
+- sprint 2: [19/11 - 01/12](Sprint2.md) : [Tâches](Task2.md)
+- sprint 3: [01/12 - 15/12](Sprint3.md) : [Tâches](Task3.md)
 
 ### Releases
 

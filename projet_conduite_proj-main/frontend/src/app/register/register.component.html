@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="container">
+    <h2>Registration</h2>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    <!-- Registration Form -->
+    <form (ngSubmit)="registerUser()">
+      <input type="text" placeholder="Name" [(ngModel)]="user.name" name="name" required>
+      <input type="email" placeholder="Email" [(ngModel)]="user.email" name="email" required>
+      <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
+
+      <!-- Role Dropdown -->
+      <select [(ngModel)]="user.role" name="role" required>
+        <option value="" disabled selected>Select a role</option>
+        <option value="SCRUM_MASTER">Scrum Master</option>
+        <option value="MEMBER">Member</option>
+      </select>
+
+      <!-- Submit Button -->
+      <button type="submit">Register</button>
+    </form>
+
+    <br>
+    <a class="link" (click)="goToLogin()">Already have an account? Click here to log in</a>
+  </div>
+</div>

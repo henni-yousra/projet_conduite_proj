@@ -1,0 +1,99 @@
+/* Dialog Background & Layout */
+::ng-deep .mat-dialog-container {
+  background-color: #EFE9E1 !important; /* Soft beige for background */
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+/* Dialog Title */
+::ng-deep .mat-dialog-title {
+  font-size: 2rem !important;
+  color: #290907 !important; /* Dark red */
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: -0.5px;
+  background: #73A1B2 !important; /* Soft blue for background */
+  color: white !important;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Field Styling */
+::ng-deep mat-form-field {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* Label Styling */
+::ng-deep mat-label {
+  font-size: 1rem !important;
+  color: #57473A !important; /* Warm brownish tone */
+  font-weight: 500;
+}
+
+/* Input Fields */
+::ng-deep .mat-input-element {
+  font-size: 1rem !important;
+  padding: 10px 15px !important;
+  border-radius: 4px !important;
+  background-color: #D0D5CE !important; /* Light grayish-green */
+  border: 1px solid #57473A !important; /* Warm brownish tone for border */
+  transition: border 0.3s ease;
+}
+
+/* Input Focus Styling */
+::ng-deep .mat-input-element:focus {
+  border-color: #6E8658 !important; /* Soft greenish tone */
+  background-color: #73A1B2 !important; /* Soft blue on focus */
+  outline: none !important;
+}
+
+/* Dialog Action Buttons */
+::ng-deep .mat-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-top: 1px solid #57473A !important; /* Warm brown border for separation */
+}
+
+/* Action Button Styling */
+::ng-deep .mat-dialog-actions button.mat-button {
+  background-color: #6E8658 !important; /* Soft greenish tone for button */
+  color: white !important;
+  padding: 10px 20px !important;
+  border-radius: 4px !important;
+  font-size: 1rem !important;
+  text-transform: uppercase !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+/* Hover and Active States for Buttons */
+::ng-deep .mat-dialog-actions button.mat-button:hover {
+  background-color: #73A1B2 !important; /* Soft blue on hover */
+}
+
+::ng-deep .mat-dialog-actions button.mat-button:active {
+  transform: translateY(2px) !important;
+}
+
+/* Cancel Button Styling */
+::ng-deep .mat-dialog-actions button.mat-button[mat-dialog-close] {
+  background-color: #290907 !important; /* Dark red for cancel */
+}
+
+::ng-deep .mat-dialog-actions button.mat-button[mat-dialog-close]:hover {
+  background-color: #57473A !important; /* Dark brownish red on hover */
+}
+
+/* Focus Effects */
+::ng-deep .mat-dialog-actions button.mat-button:focus {
+  outline: none !important;
+}

@@ -1,0 +1,11 @@
+<section>
+
+    <button mat-flat-button (click)="openCreateProjectDialog()">
+        <mat-icon>add</mat-icon>
+        Create project
+    </button>
+</section>
+<mat-divider [inset]="true" [vertical]="true"></mat-divider>
+<section>
+    <app-projects-card [projects]="projects" (createProject)="openCreateProjectDialog()"></app-projects-card>
+</section>

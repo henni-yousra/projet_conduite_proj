@@ -6,8 +6,6 @@ Un outil pour gérer la production logicielle en suivant la méthode Scrum.
 - DIALLO
 - HENNI-MANSOUR
 
-## [Release Repo](https://github.com/dokabdou/projet_conduite_proj_release)
-
 ### Backlog
 
 | ID   | En tant que...   | Je souhaite pouvoir...                                                                                     | Afin de...                                     | Priorité | Difficulté | Sprint | Statut   | Critères d'acceptation                                                                 |

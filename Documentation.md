@@ -36,3 +36,10 @@ le back est lancé en local sur le port 5000, et est accessible avec un navigate
     $ ng serve
 
 l'app angular est lancée sur le port 42OO
+
+
+
+### Diagrammes
+
+![Diagramme de US1 à US8](/assests/Maquettes%20CDP-1.jpg)
+![Diagramme de US9 à US11](/assests/Maquettes%20CDP-2.jpg)

@@ -25,15 +25,12 @@
   - Correction de bugs affectant la connexion et l'inscription des utilisateurs.
   - Amélioration de la stabilité du processus d'inscription et de la redirection vers le tableau de bord.
 
+  ![Login](/assests/login error.png)
+![Registration](/assests/registration error.png)
+
 - **Tests automatisés** :
   - Correction des tests automatisés liés à la connexion, l'inscription et la gestion des projets.
 
-## Changements Importants
-- **Sécurisation des APIs** : 
-  - Mise en place d'une meilleure sécurité pour l'ajout et la suppression de membres, avec des vérifications d'autorisation au niveau du backend.
-  
-- **Refactorisation du Code** :
-  - Refactorisation du code backend et frontend pour améliorer la lisibilité et la maintenabilité.
   
 ## Tests
 - **Tests Backend** :
@@ -47,9 +44,8 @@
 - Finalisation de la documentation utilisateur et des tests de validation.
   
 ## Prochaines Étapes
-- **Sprint 3** : Finalisation des fonctionnalités restantes et tests de validation.
-- Documentation complète pour l'achèvement du projet.
+- **Sprint 3** : Finalisation des fonctionnalités restantes.
 
 ## Notes
-- **Version précédente** : Release 1.1
-- **Version suivante** : Release 1.3 (prévue pour la fin de Sprint 3)
+- **Version précédente** : [RELEASE-1.0](Release1.0.md)
+- **Version suivante** : RELEASE-1.3 (prévue pour la fin de Sprint 3)

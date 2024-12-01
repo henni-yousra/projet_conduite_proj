@@ -51,3 +51,9 @@ Un outil pour gérer la production logicielle en suivant la méthode Scrum.
 - [RELEASE-1.0](Release1.0.md)
 - [RELEASE-1.1](Release1.1.md)
 - [RELEASE-1.2](Release1.2.md)
+
+![Login](/assests/Login.png)
+![Registration](/assests/Registration.png)
+![Dashboard](/assests/dashboard.png)
+![Project creation](/assests/create_project.png)
+![Project page](/assests/project_page.png)

@@ -25,8 +25,8 @@
   - Correction de bugs affectant la connexion et l'inscription des utilisateurs.
   - Amélioration de la stabilité du processus d'inscription et de la redirection vers le tableau de bord.
 
-  ![Login](/assests/login error.png)
-![Registration](/assests/registration error.png)
+![Login](/assests/login-error.png)
+![Registration](/assests/registration-error.png)
 
 - **Tests automatisés** :
   - Correction des tests automatisés liés à la connexion, l'inscription et la gestion des projets.

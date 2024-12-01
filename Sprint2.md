@@ -5,13 +5,13 @@
 | ID   | En tant que...     | Je souhaite pouvoir...                                                                                     | Afin de...                                    | Statut   |
 |------|--------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------|----------|
 | US7  | Utilisateur        | Cliquer sur un projet dans ma liste pour accéder à sa page dédiée                                         | Voir les détails et gérer le projet            | Terminé  |
-| US8  | Utilisateur        | Accéder aux sections "Besoins", "Tâches", "Documentation", "Release" et "Sprints" via une barre de navigation | Gérer les différents aspects du projet        | Terminé  |
+| US8  | membre de projet        | Accéder aux sections "Besoins", "Tâches", "Documentation", "Release" et "Sprints" via une barre de navigation | Gérer les différents aspects du projet        | Terminé  |
 
 ## US en Cours
 
 | ID   | En tant que...     | Je souhaite pouvoir...                                                                                     | Afin de...                                    | Statut   |
 |------|--------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------|----------|
-| US9  | Utilisateur        | Visualiser la description et les membres du projet sur la page dédiée                                     | Obtenir une vue d'ensemble du projet           | En cours |
+| US9  | membre de projet        | Visualiser la description et les membres du projet sur la page dédiée                                     | Obtenir une vue d'ensemble du projet           | En cours |
 | US10 | Chef de projet     | Ajouter et supprimer des membres du projet                                                                | Gérer la composition de l'équipe               | En cours |
 
 ## Suivi d'avancement

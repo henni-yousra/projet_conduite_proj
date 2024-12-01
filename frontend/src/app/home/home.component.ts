@@ -19,17 +19,24 @@ export class HomeComponent {
   @Input() projects!: Project[];
 
   readonly dialog = inject(MatDialog);
+  
+    // Output EventEmitter with object containing projectName and projectDescription
+    @Output() createProject = new EventEmitter<{ projectName: string, projectDescription: string }>();
+
 
   openCreateProjectDialog(): void {
     const dialogRef = this.dialog.open(CreateProjectDialogComponent, { data: {} }); //data: {  projectName: this.projectName() }
 
     dialogRef.afterClosed().subscribe((result: ProjectDialogData) => {
       if (result) {
-        console.log(result.projectName);//
-        this.createProject.emit(result.projectName);
+        // Emit the projectName and projectDescription as an object
+        this.createProject.emit({
+          projectName: result.projectName,
+          projectDescription: result.projectDescription
+        });
       }
     });
   }
 
-  @Output() createProject = new EventEmitter<string>();
+
 }

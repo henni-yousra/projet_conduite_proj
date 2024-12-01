@@ -12,8 +12,6 @@ Le chef de projet est un utilisateur qui a créé un nouveau projet. En tant que
 ## Membre
 Ce rôle regroupe tous les membres d'un projet qui ne sont pas chefs de projet. Ils ont des droits plus limités que ceux du chef et ne peuvent rejoindre le projet qu'avec son accord (après demande).
 
-## Propriétaire
-Le propriétaire a accès au projet sans les droits d'écriture.
 
 ![Diagramme de rôles](/assests/Maquettes%20CDP-3.jpg)
 

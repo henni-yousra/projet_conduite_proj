@@ -8,9 +8,26 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.conduite.entities.AppUser;
 import com.example.conduite.repos.AppUserRepo;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 @Service
 public class AppUserService {
+    
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public AppUser findByEmail(String email) {
+        try {
+            return entityManager.createQuery("SELECT u FROM AppUser u WHERE u.email = :email", AppUser.class)
+                                .setParameter("email", email)
+                                .getSingleResult();
+        } catch (Exception e) {
+            return null;  // Handle cases where no user is found
+        }
+    }
+
     private JdbcTemplate jdbcTemplate;
+
     @Autowired
     public void setTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -23,32 +40,51 @@ public class AppUserService {
     }
 
     @Transactional
-    public void addPersonToDatabase(String name, String email) {
-        System.out.println("Adding a new person to the table...!");
-        String sql = "INSERT INTO dbConduiteProj.appuser (name, email) VALUES (?,?)";
-
+    public void addPersonToDatabase(String name, String email, String role, String password) {
+        System.out.println("Adding a new person to the table...");
+        
+        // Check if the email already exists in the database
+        if (emailExists(email)) {
+            System.out.println("Error: Email already exists in the database.");
+            return;  // Prevent adding the person if email exists
+        }
+        
+        String sql = "INSERT INTO dbConduiteProj.appuser (name, email, role) VALUES (?,?,?)";
+        
         // Execute the insert query
-        jdbcTemplate.update(sql, name, email);
-        System.out.println("Person added to the database: Name - " + name + ", Email - " + email + ", Role - ");
+        jdbcTemplate.update(sql, name, email, role, password);
+        System.out.println("Person added to the database: Name - " + name + ", Email - " + email + ", Role - " + role + ", Password - " + password);
     }
+
     @Autowired
     private AppUserRepo appUserRepo;
 
     @Transactional
     public AppUser registerUser(String name, String email, String role, String password) {
+        // Check if the email already exists
+        if (emailExists(email)) {
+            throw new IllegalArgumentException("Email already registered");
+        }
+
+        // Create and save the user
         AppUser user = new AppUser(name, email, role, password);
         return appUserRepo.save(user);
     }
 
+    // Check if email exists in the database
+    private boolean emailExists(String email) {
+        return appUserRepo.findByEmail(email) != null;
+    }
+
     public boolean validateUserCredentials(String email, String password) {
         AppUser user = appUserRepo.findByEmail(email);
-        if (user != null && user.getPassword().equals(password)) {
-            return true;  // Valid user
+        if (user != null) {
+            // Use .equals() to compare the strings
+            if (password.equals(user.getPassword())) {
+                return true;  // Valid user
+            }
         }
         return false;  // Invalid credentials
     }
-
-
-
-
+    
 }

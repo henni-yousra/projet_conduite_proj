@@ -40,11 +40,11 @@ export class RequestService {
     return data;
   }
 
-  async createProject(projectName: string) {
+  async createProject(projectName: string, projectDescription: string) {
 
     let form = new FormData();
     form.append("name", projectName);
-    form.append("description", projectName);
+    form.append("description", projectDescription);
 
     const obs = this.http.post("projects/addProject", form, {responseType: 'text'});
     await lastValueFrom(obs);

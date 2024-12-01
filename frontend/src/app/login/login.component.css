@@ -2,44 +2,34 @@
 * {
   margin: 0;
   padding: 0;
-
-}
-/* Underline the "already have an account" link */
-.link {
-  color: var(--bright-blue); /* Optional: Change text color */
-  text-decoration: underline; /* Add underline to the text */
-  cursor: pointer; /* Show pointer cursor for clickable text */
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  box-sizing: border-box;
 }
 
-/* Change color on hover */
-.link:hover {
-  color: var(--electric-violet); /* Optional: Hover effect */
-}
-
-
-/* Ensure html and body take up full height */
+/* Ensure full height for the page */
 html, body {
-  height: 100%;  /* Make sure the body and html take the full height of the page */
-  margin: 0;     /* Remove default margin */
-  display: flex; /* Enable flexbox layout on body */
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
+  height: 100%;
   font-family: 'Arial', sans-serif;
   background-color: #f0f4f8;
 }
 
-/* Container (Login Box) */
-div {
-  background-color: #fff;
-  width: 100%;
+/* Wrapper to enable flexbox layout */
+.wrapper {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  min-height: 100vh;       /* Full viewport height */
+}
 
+/* Container */
+.container {
+  background-color: #fff;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  width: 100%;
+  max-width: 400px;
   animation: fadeIn 0.5s ease-in-out;
+  text-align: center;
 }
 
 /* Header */
@@ -59,19 +49,19 @@ form {
 
 /* Label Styling */
 label {
-  text-align: left;
   font-size: 14px;
   color: #333;
+  text-align: left;
   margin-bottom: 5px;
 }
 
 /* Input Fields Styling */
 input {
+  width: 300px;
   padding: 12px 15px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
-
   background-color: #fafafa;
   transition: all 0.3s ease;
 }
@@ -84,6 +74,8 @@ input:focus {
 
 /* Button Styling */
 button {
+  width: 300px;
+  margin-left:20px ;
   padding: 12px 20px;
   background-color: rgb(73, 73, 73);
   color: white;
@@ -95,16 +87,51 @@ button {
 }
 
 button:hover {
-  background-color: rgb(  37,37,37);
+  background-color: rgb(37, 37, 37);
 }
 
-/* Hover Effect */
 button:focus {
   outline: none;
 }
 
 button:active {
   transform: translateY(2px);
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Link Styling */
+.link {
+  color: var(--bright-blue);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--electric-violet);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 
 /* Input Focus Animation */
@@ -116,21 +143,5 @@ button:active {
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  div {
-    padding: 20px;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  button {
-    font-size: 14px;
-    padding: 10px;
   }
 }

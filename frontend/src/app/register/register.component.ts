@@ -37,7 +37,7 @@ export class RegisterComponent {
         },
         error => {
           console.error('Error registering user', error);
-          this.errorMessage = 'Registration failed. Please try again!';
+          this.errorMessage = 'This email is already registered. Please choose another one';
         }
       );
   }

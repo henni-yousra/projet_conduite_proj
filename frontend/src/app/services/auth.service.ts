@@ -1,21 +1,20 @@
-import { Injectable } from '@angular/core';
+// auth.service.ts
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private baseUrl = 'http://localhost:8080/api/auth';
 
-  private baseUrl = 'http://localhost:8080/auth';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  register(user: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, user);
+  checkEmailExists(email: string) {
+    return this.http.get<boolean>(`${this.baseUrl}/check-email?email=${email}`);
   }
 
-  login(credentials: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, credentials);
+  register(user: any) {
+    return this.http.post(`${this.baseUrl}/register`, user);
   }
 }

@@ -29,19 +29,14 @@ export class DashboardComponent implements OnInit {
   {
     this.reqSvc.getProjects().then((res) => this.projects = res);
   }
-
-  onCreateProject(projectName: string) 
-  {
-    this.reqSvc.createProject(projectName).then(() => 
-    {
-      this.reqSvc.getProjects().then((res) =>  
-        {
-          this.projects = res;
-          //this.changeDetectorRef.detectChanges();
-        });
-    })
-
+  onCreateProject(projectData: { projectName: string, projectDescription: string }) {
+    this.reqSvc.createProject(projectData.projectName, projectData.projectDescription).then(() => {
+      this.reqSvc.getProjects().then((res) => {
+        this.projects = res;
+      });
+    });
   }
+  
   logout() {
     // Navigate to the registration page
     this.router.navigate(['/login']);

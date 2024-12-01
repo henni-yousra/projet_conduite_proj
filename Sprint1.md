@@ -33,9 +33,8 @@ Ce sprint vise à établir les bases fonctionnelles du système, notamment l'ins
 | US1  | En tant que visiteur, je souhaite pouvoir accéder à la page d'accueil avec l'option de me connecter ou de créer un compte, afin de démarrer l'utilisation de la plateforme. |
 | US2  | En tant que visiteur, je souhaite pouvoir créer un compte et me connecter ensuite, afin d'avoir un accès personnalisé à l'application. |
 | US3  | En tant qu'utilisateur, je souhaite être redirigé vers mon tableau de bord après ma connexion, afin de pouvoir naviguer vers l'espace utilisateur. |
-| US4  | En tant qu'utilisateur, je souhaite voir l'option de créer un projet ou d'accéder à un projet existant, afin de gérer ou rejoindre un projet. |
-| US5  | En tant qu'utilisateur, je souhaite visualiser la liste de mes projets sur le tableau de bord, afin de voir mes projets actifs. |
-| US6  | En tant qu'utilisateur, je souhaite cliquer sur "Créer un nouveau projet" et être redirigé vers une page avec un formulaire (titre, description), afin d'initier un nouveau projet. |
+| US4  | En tant qu'utilisateur, je souhaite visualiser la liste de mes projets sur le tableau de bord, afin de voir mes projets actifs. |
+| US5  | En tant qu'utilisateur, je souhaite cliquer sur "Créer un nouveau projet" afin d'avoir un formulaire (titre, description) pour initier un nouveau projet. |
 
 
 

@@ -7,7 +7,6 @@
 | T0.1     | Initialiser le projet avec Angular, SpringBoot, et PostgreSQL.                                  | -         | -           | Terminé  | DREZEN, DIALLO               |
 | T0.2     | Configurer la base de données PostgreSQL et créer les tables nécessaires pour les utilisateurs. | US1, US2  | T0.1        | Terminé  | DIALLO               |
 | T0.3     | Implémenter le backend et tester les opérations CRUD sur la base de données PostgreSQL.         | US3       | T0.2        | Terminé  | DIALLO               |
-| T0.4     | Tester les fonctionnalités implémentées                       | US5       | T0.3        | Terminé  | DREZEN, Henni-Mansour      |
 
 
 ## Suivi d'avancement

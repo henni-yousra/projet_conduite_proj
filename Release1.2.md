@@ -28,17 +28,6 @@
 ![log in](/assests/login-error.png)
 ![register](/assests/registration-error.png)
 
-- **Tests automatisés** :
-  - Correction des tests automatisés liés à la connexion, l'inscription et la gestion des projets.
-
-  
-## Tests
-- **Tests Backend** :
-  - Tests automatisés ajoutés pour vérifier le bon fonctionnement des fonctionnalités d'ajout et suppression de membres dans les projets.
-
-- **Tests Frontend** :
-  - Tests de navigation et de chargement des pages de projet, ainsi que des interactions avec les nouvelles sections de la barre de navigation.
-
 ## Améliorations à Venir
 - Compléter le développement du frontend pour l'ajout et la suppression de membres dans la page de gestion de projet.
 - Finalisation de la documentation utilisateur et des tests de validation.

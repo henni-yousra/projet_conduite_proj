@@ -18,6 +18,5 @@
 - Les bugs de connexion et d'inscription ont été corrigés avec succès.
 - Les fonctionnalités pour accéder à la page de projet et la barre de navigation pour les sections principales sont terminées.
 - Le frontend pour visualiser la description du projet et les membres associés (US9) est en cours de développement.
-- Le service backend pour l'ajout et la suppression de membres (US10) a été implémenté, et les tests backend pour cette fonctionnalité sont également terminés.
-- Les problèmes liés aux tests ont été corrigés et les tests sont maintenant fonctionnels.
+- Le service backend pour l'ajout et la suppression de membres (US10) a été implémenté.
 

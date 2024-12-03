@@ -1,0 +1,23 @@
+{
+  "name": "projet_conduite_proj",
+  "version": "1.0.0",
+  "description": "* US1 en tant qu'utilisateur je souhaite pouvoir créer un projet avec un nom et une description sur une page dédié ou la page d'accueil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dokabdou/projet_conduite_proj.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dokabdou/projet_conduite_proj/issues"
+  },
+  "homepage": "https://github.com/dokabdou/projet_conduite_proj#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

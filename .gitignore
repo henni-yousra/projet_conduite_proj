@@ -1,2 +1,4 @@
-conduite_proj_env/
-node_modules/
+**/node_modules/
+**/.angular/
+**/.vscode/
+**/dist/

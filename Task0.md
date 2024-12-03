@@ -1,22 +1,17 @@
-### Tâches
+# Tâches du Sprint 0
 
-* T0 mettre en place l'environement de développement
+## Tâches Détails
 
-- US1 : en tant qu'utilisateur je souhaite pouvoir créer un projet avec un nom et une description sur une page dédié ou la page d'accueil
+| Tâche ID | Description                                                                                     | Liée à US | Dépendances | Statut   | Responsable          |
+|----------|-------------------------------------------------------------------------------------------------|-----------|-------------|----------|----------------------|
+| T0.1     | Initialiser le projet avec Angular, SpringBoot, et PostgreSQL.                                  | -         | -           | Terminé  | DREZEN, DIALLO               |
+| T0.2     | Configurer la base de données PostgreSQL et créer les tables nécessaires pour les utilisateurs. | US1, US2  | T0.1        | Terminé  | DIALLO               |
+| T0.3     | Implémenter le backend et tester les opérations CRUD sur la base de données PostgreSQL.         | US3       | T0.2        | Terminé  | DIALLO               |
+| T0.4     | Tester les fonctionnalités implémentées                       | US5       | T0.3        | Terminé  | DREZEN, Henni-Mansour      |
 
-    - Créer une page d'accueil avec un titre
 
-    - Ajouter une section à l'accueil initulé "Créer projet" avec un champs "Nom du projet" et un champ "description"
+## Suivi d'avancement
+Les premières étapes de l'implémentation ont été complétées, avec une configuration réussie du backend, de la base de données et des fonctionnalités principales (inscription, connexion, CRUD). Les fonctionnalités de base sont désormais en place et ont été testées avec succès.
 
-- US2: en tant qu'utilisateur je souhaite pouvoir visulaliser mes projet sous forme de liste sur une page dédié ou la page d'accueil
-
-    - Ajouter une section pour visualiser les projets qui affiche une liste de projets.
-
-- US1 & US2 :
-    - mettre en place la BDD pour permettre d'ajouter des projets pour des utilisateur et des taches dans des projets
-    
-    - relier l'ajout de projet de la page d'accueil à la BDD
-
-    - relier la visualisation de liste de projets à la BDD
-
-    - tester les fonctionnalitées
+## Prochaines Étapes
+Les tâches non terminées seront intégrées dans le Sprint suivant pour compléter les fonctionnalités supplémentaires prévues pour la version 1.1. Cela inclut l'intégration du frontend et l'ajout des maquettes.

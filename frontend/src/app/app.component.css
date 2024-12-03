@@ -1,0 +1,22 @@
+/* Inside app-home.component.css */
+::ng-deep .create-project-btn {
+    background-color: #73A1B2; /* Soft blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+::ng-deep .create-project-btn:hover {
+    background-color: #6E8658; /* Soft greenish */
+}
+
+::ng-deep .create-project-btn:active {
+    transform: translateY(2px); /* Slight push-down on click */
+}
+
+::ng-deep .create-project-btn:focus {
+    outline: none;
+}

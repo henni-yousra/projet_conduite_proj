@@ -1,0 +1,121 @@
+/* General Card Styles */
+.card {
+  width: 100%; /* Maintain card width but make it responsive */
+  background-color: #EFE9E1; /* Soft beige */
+  border-radius: 12px; /* Slightly rounded corners */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Softer, deeper shadow */
+  padding: 1.75rem; /* Adjust padding for more breathing room */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem; /* Add space between cards */
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Slight hover effect */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Card Header */
+.card-header {
+  font-size: 1.75rem;
+  color: #290907; /* Dark red */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05rem;
+  text-transform: capitalize;
+  border-bottom: 2px solid #D0D5CE; /* Soft border color */
+  padding-bottom: 0.5rem;
+}
+
+/* Card Body */
+.card-body {
+  font-size: 1rem;
+  color: #57473A; /* Warm brownish tone */
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  padding-bottom: 1rem; /* Allow some space before the footer */
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-top: 2px solid #D0D5CE; /* Soft border color */
+}
+
+.card-footer .status {
+  padding: 6px 14px;
+  background-color: #73A1B2; /* Soft blue */
+  color: white;
+  border-radius: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+/* Mat Grid Tile - Cards within grid layout */
+mat-grid-tile {
+  background: #D0D5CE; /* Light grayish-green */
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for grid items */
+}
+
+/* Card Actions */
+.card-footer button {
+  background-color: #73A1B2; /* Soft blue */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.card-footer button:hover {
+  background-color: #6E8658; /* Soft greenish on hover */
+}
+
+.card-footer button:active {
+  transform: translateY(2px); /* Slight push-down on click */
+}
+
+.card-footer button:focus {
+  outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    width: 100%; /* Make cards full-width on small screens */
+    padding: 1rem;
+    margin-bottom: 1.5rem; /* Increase space between cards */
+  }
+
+  .card-header {
+    font-size: 1.5rem;
+    text-align: center; /* Center the header text on smaller screens */
+  }
+
+  .card-body {
+    font-size: 0.95rem; /* Adjust font size slightly */
+  }
+
+  .card-footer .status {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Custom Styles for Grid Layout */
+mat-grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Auto grid layout */
+  gap: 1.5rem; /* Adjusted for consistent spacing */
+  padding: 2rem 0; /* Add padding to the grid */
+}

@@ -1,0 +1,22 @@
+/* In styles.scss or global styles file */
+button {
+  background-color: #73A1B2 !important; /* Soft blue */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #6E8658 !important; /* Soft greenish */
+}
+
+button:active {
+  transform: translateY(2px); /* Slight push-down on click */
+}
+
+button:focus {
+  outline: none;
+}

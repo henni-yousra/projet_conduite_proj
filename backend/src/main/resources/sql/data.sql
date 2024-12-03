@@ -6,7 +6,7 @@
 --INSERT INTO dbConduiteProj.project (projname, projdesc) VALUES ('Penguin', 'A penguin colony');
 --INSERT INTO dbConduiteProj.project (projname, projdesc) VALUES ('Polar Bear', 'A polar bear family');
 
---insert into dbConduiteProj.appuser(id,email,name,role) values (1, 'doktor@gmail.com','Doktor','chef');
+--insert into dbConduiteProj.appuser(id,email,name,userrole) values (1, 'doktor@gmail.com','Doktor','chef');
 --select * from dbConduiteProj.appuser
 
-insert into dbConduiteProj.appuser(id,name,email,role) values (1, 'Doktor', 'doktor@gmail.com','chef');
+insert into dbConduiteProj.appuser(id,name,email,userrole) values (1, 'Doktor', 'doktor@gmail.com','chef');

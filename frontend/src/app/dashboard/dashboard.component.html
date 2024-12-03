@@ -1,0 +1,11 @@
+
+<main class="main">
+  <button class="logout-btn" (click)="logout()">Logout</button>
+    <div class="content">  
+
+        <h1>Dashboard</h1>         <!-- Logout Button -->
+        <p> Welcome to Scrumming ! </p>
+        <app-home [projects]="projects" (createProject)="onCreateProject($event)"></app-home>
+    </div>
+
+  </main>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from '/home/yousra/Downloads/projet_conduite_proj-main/frontend/src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';

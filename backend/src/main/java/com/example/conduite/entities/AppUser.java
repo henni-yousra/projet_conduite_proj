@@ -44,8 +44,12 @@ public class AppUser {
         this.password = password;
     }
 
+public Long getId() {
+    return this.id;
+}
 
 // Getter and setter for name
+
 public String getName() {
     return name;
 }

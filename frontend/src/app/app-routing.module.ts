@@ -11,6 +11,14 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'register', component: RegisterComponent }, 
     { path: 'project/:id', component: ProjectPageComponent }, 
+    /**
+     * paths for Besoins Tâches, Documentation, Release, Sprints of each project
+     * { path: 'Besoins/:id', component: BesoinComponent },
+     * { path: 'Tâches/:id', component: TâcheComponent },
+     * { path: 'Documentation/:id', component: DocumentationComponent },
+     * { path: 'Release/:id', component: ReleaseComponent },
+     * { path: 'Sprints/:id', component: SprintComponent },
+     */
     //{ path: '**', redirectTo: 'login' }, // Fallback route
 ];
 

@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { Project } from '../model/projet';
 import { text } from 'express';
 import { RequestService } from '../request.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-project-page',
@@ -18,13 +20,19 @@ export class ProjectPageComponent
 
   project = {id:this.id, text:"", description:""}
 
-  constructor(private reqSvc: RequestService)
+  constructor(private reqSvc: RequestService, private router: Router)
   {
     this.reqSvc.getProjects().then((res) => 
       {
         this.project = res.find((proj) => proj.id == this.id)!;
       });
     //this.reqSvc.getProject(this.id).then((res) => this.project = res);
+  }
+
+  // Function to navigate back to the dashboard page
+  goBack() {
+    // Navigate to the dashboard page
+    this.router.navigate(['/dashboard']);
   }
 
 }

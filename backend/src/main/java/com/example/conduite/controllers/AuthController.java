@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.conduite.entities.AppUser;
 import com.example.conduite.services.AppUserService;
 
 @RestController
@@ -17,6 +18,8 @@ public class AuthController {
 
     @Autowired
     private AppUserService userService;
+
+    private String userEmail;
 
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> registerUser(@RequestBody Map<String, String> userDTO) {
@@ -76,12 +79,22 @@ public class AuthController {
      
          if (isValidUser) {
              response.put("message", "Login successful.");
+             userEmail = email;
              return ResponseEntity.ok(response);  // 200 OK
          } else {
              response.put("message", "Invalid email or password.");
              return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);  // 401 Unauthorized
          }
      }
+
+    @GetMapping("/getName")
+    public ResponseEntity<Map<String, String>> getName() {
+        Map<String, String> response = new HashMap<>();
+        AppUser user = userService.findByEmail(userEmail);
+        userEmail = null;
+        response.put("name", user.getName());
+        return ResponseEntity.ok(response);
+    }
      
 
     // Optionally, you can add an endpoint to clear the user table (for testing or maintenance)

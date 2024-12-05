@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectPageComponent } from './project-page/project-page.component';
+import { UsersCardComponent } from './users-card/users-card.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -11,8 +12,10 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'register', component: RegisterComponent }, 
     { path: 'project/:id', component: ProjectPageComponent }, 
+    { path: 'members', component: UsersCardComponent },
     /**
      * paths for Besoins Tâches, Documentation, Release, Sprints of each project
+     * { path: 'Members', component: UserCardComponent },
      * { path: 'Besoins/:id', component: BesoinComponent },
      * { path: 'Tâches/:id', component: TâcheComponent },
      * { path: 'Documentation/:id', component: DocumentationComponent },

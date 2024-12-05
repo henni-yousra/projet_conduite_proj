@@ -40,7 +40,7 @@ public class AppUserController {
         System.out.println("All persons have been deleted.");
     }
 
-    @GetMapping("/viewUsers")
+    @GetMapping("")
     public List<AppUser> getAllAppUsers() {
         //http://localhost:5000/appusers/viewUsers
         return appUserRepo.findAll();  // Fetch all AppUsers from the database

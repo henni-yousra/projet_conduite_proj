@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

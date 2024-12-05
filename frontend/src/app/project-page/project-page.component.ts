@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Project } from '../model/projet';
+import { Project } from '../model/project';
 import { text } from 'express';
 import { RequestService } from '../request.service';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class ProjectPageComponent
 {
   @Input() id!: number;
 
-  project = {id:this.id, text:"", description:""}
+  project = {id:this.id, name:"", description:""}
 
   constructor(private reqSvc: RequestService, private router: Router)
   {

@@ -30,7 +30,6 @@ public class MainController {
     private List<Project> projects = new ArrayList<>();
 
     public MainController() {
-        
     }
 
     @GetMapping({"/", "/index"})

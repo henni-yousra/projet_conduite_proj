@@ -73,7 +73,7 @@ export class RequestService {
   {
     // let res : Project; 
 
-    let params = new HttpParams();
+    /* let params = new HttpParams();
     params = params.append('id', id);
 
     const obs = this.http.get("projects", {params});
@@ -81,9 +81,16 @@ export class RequestService {
 
     console.log(data);
 
-    return data;
+    return data; */
+    let res = this.http.get<Project>(`/projects/${id}`).toPromise();
+    return res as Promise<Project>;
   }
 
+  updateProject(project: Project): Promise<void> {
+    return this.http.put<void>(`/projects/${project.id}`, project).toPromise();
+  }
+
+  
   async createProject(projectName: string, projectDescription: string) {
 
     let form = new FormData();
@@ -115,5 +122,23 @@ export class RequestService {
     console.log(data);
 
     return data;
+  }
+
+
+  async addMembersToProject(projectId : number, projMembers: User[]) {
+    console.log('Adding members to project:', projMembers);
+    let form = new FormData();
+    form.append("projectId", projectId.toString());
+    form.append("members", JSON.stringify(projMembers));
+
+    //console.log("projectId", projectId.toString());
+    //console.log("members", JSON.stringify(projMembers));
+    console.log("form", form);
+
+    console.log("addMembersToProject");
+    let addMembersUrl = `/projects/${projectId}/addMembers`;
+    const obs = this.http.post(addMembersUrl, form, {responseType: 'text'});
+    
+    await lastValueFrom(obs);
   }
 }

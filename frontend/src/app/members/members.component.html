@@ -1,0 +1,61 @@
+<main class="main">
+
+<div class="members-container">
+  <h1>Members</h1>
+  <div class="content">
+    <p>Manage members of the {{project?.name}} project</p>
+    <p>{{project?.description}}</p>
+  </div>
+
+  <mat-card class="card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Project Members</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-grid-list cols="2" rowHeight="2:1">
+            @for (member of members; track member.id) {
+                <mat-grid-tile >{{member.name}}</mat-grid-tile>
+              }
+        </mat-grid-list>          
+    </mat-card-content>
+    <mat-card-footer class="card-footer">
+    </mat-card-footer>
+  </mat-card>  
+
+
+  <!-- Add Members Grid -->
+  <mat-card class="card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Add Members</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile *ngFor="let user of users; trackBy: trackByUserId" [ngClass]="{'selected': user.selected}">
+          <mat-checkbox [(ngModel)]="user.selected" aria-label="Select {{ user.name }}">{{ user.name }}</mat-checkbox>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+    <mat-card-footer class="card-footer">
+      <button mat-raised-button color="primary" (click)="addSelectedMembers()">Add Selected Members</button>
+    </mat-card-footer>
+  </mat-card>
+  
+  <!-- <div *ngIf="members.length; else noMembers" class="content">
+    <ul>
+      <li *ngFor="let member of members">
+        {{ member.name }} ({{ member.email }})
+      </li>
+    </ul>
+  </div>
+  <ng-template #noMembers>
+    <p>No members in this project. Add users from the list below:</p>
+    <ul>
+      <li *ngFor="let user of users" (click)="addMember(user)">
+        {{ user.name }} ({{ user.email }})
+      </li>
+    </ul>
+  </ng-template> -->
+  <button class="back-dashboard-btn" (click)="goBack()">Back</button>
+</div>
+
+</main>

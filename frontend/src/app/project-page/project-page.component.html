@@ -2,15 +2,17 @@
     <div class="project-container">
         <!-- Project Info -->
         <div class="content">
-            <h1>Project - {{project.name}}</h1>
-            <p>Welcome to the {{project.name}} project</p>
-            <p>{{project.description}}</p>
+            <!-- Project Name and Description and "?" because it is possibly undefined-->
+            <h1>Project - {{project?.name}}</h1>
+            <p>Welcome to the {{project?.name}} project</p>
+            <p>{{project?.description}} {{project?.id}}</p>
         </div>
 
         <!-- Navigation Bar for Sections -->
         <nav class="project-nav">
             <ul>
-                <li class = "nav-item"><a routerLink="members" routerLinkActive="active" class="nav-link">Members</a></li>
+                <!-- <li class = "nav-item"><a routerLink="/members" routerLinkActive="active" class="nav-link" (click)="onTileClick(members)">Members</a></li> -->
+                <li class="nav-item"><a [routerLink]="['/members', project?.id]" routerLinkActive="active" class="nav-link" (click)="onTileClick(project?.id)">Members</a></li>
                 <li class = "nav-item"><a routerLink="" routerLinkActive="active" class="nav-link">Besoins</a></li>
                 <li class = "nav-item"><a routerLink="" routerLinkActive="active" class="nav-link">Tâches</a></li>
                 <li class = "nav-item"><a routerLink="" routerLinkActive="active" class="nav-link">Documentation</a></li>
@@ -18,6 +20,7 @@
                 <li class = "nav-item"><a routerLink="" routerLinkActive="active" class="nav-link">Sprints</a></li>
             </ul>
         </nav>
+        <router-outlet></router-outlet>
         <!--Button back to home-->
         <button class="back-dashboard-btn" (click)="goBack()">Back</button>
     </div>

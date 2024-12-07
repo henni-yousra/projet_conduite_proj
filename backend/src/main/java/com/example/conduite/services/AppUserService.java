@@ -1,5 +1,10 @@
 package com.example.conduite.services;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -85,6 +90,28 @@ public class AppUserService {
             }
         }
         return false;  // Invalid credentials
+    }
+
+    public List<AppUser> findAllById(String[] parts) {
+        JSONArray jsonArray = new JSONArray();
+        for (String part : parts) {
+            jsonArray.add(part);
+        }
+
+        List<Long> ids = new ArrayList<>();
+        for (Object obj : jsonArray) {
+            ids.add(Long.parseLong((String) obj));
+        }
+        
+        List<AppUser> users = new ArrayList<>();
+        for (Long id : ids) {
+            AppUser user = appUserRepo.findById(id).orElse(null);
+            if (user != null) {
+                users.add(user);
+            }
+        }
+
+        return users;
     }
     
 }

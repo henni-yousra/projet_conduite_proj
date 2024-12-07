@@ -5,14 +5,15 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectPageComponent } from './project-page/project-page.component';
 import { UsersCardComponent } from './users-card/users-card.component';
+import { MembersComponent } from './members/members.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'register', component: RegisterComponent }, 
-    { path: 'project/:id', component: ProjectPageComponent }, 
-    { path: 'members', component: UsersCardComponent },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'login', title: 'Login', component: LoginComponent },
+    { path: 'dashboard', title:'Dashboard', component: DashboardComponent },
+    { path: 'register', title:'Registration', component: RegisterComponent }, 
+    { path: 'project/:id', title:'Project Page', component: ProjectPageComponent }, 
+    { path: 'members/:id', title:'Project Members', component: MembersComponent },
     /**
      * paths for Besoins Tâches, Documentation, Release, Sprints of each project
      * { path: 'Members', component: UserCardComponent },

@@ -1,0 +1,364 @@
+/* Body background */
+body {
+    background: #EFE9E1; /* Soft beige background */
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* General container for the project page */
+.members-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+}
+
+
+/* Container for the members list */
+.members-list {
+    width: 100%;
+    max-width: 900px;
+    background: #F9F9F9; /* Light grey background */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Header for the members list */
+.members-list h2 {
+    font-size: 2rem;
+    color: #333; /* Dark grey */
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* List of members */
+.members-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual member item */
+.members-list li {
+    background: #FFF; /* White background */
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+}
+
+/* Member name and email */
+.members-list li span {
+    color: #555; /* Medium grey */
+    font-size: 1rem;
+}
+
+/* Hover effect for member item */
+.members-list li:hover {
+    background: #EFEFEF; /* Slightly darker grey */
+}
+
+/* Add member button */
+.add-member-btn {
+    background: #007BFF; /* Blue background */
+    color: #FFF; /* White text */
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Hover effect for add member button */
+.add-member-btn:hover {
+    background: #0056b3; /* Darker blue */
+}
+
+/* Content section with project information */
+.content {
+    width: 100%;
+    max-width: 900px;
+    background: #EFE9E1; /* Soft beige background */
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: #290907; /* Dark red */
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.125rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: #57473A; /* Warm brownish tone */
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Navigation Bar Styling */
+.project-nav {
+    width: 100%;
+    background: #73A1B2; /* Soft blue */
+    padding: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+}
+
+.project-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-nav li {
+    display: inline-block;
+}
+
+.project-nav a {
+    font-size: 1.125rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.project-nav a:hover,
+.project-nav a:focus {
+    background-color: #6E8658; /* Soft greenish on hover/focus */
+    transform: translateY(-2px);
+}
+
+.project-nav a:active {
+    transform: translateY(2px);
+}
+
+/* Button Style for Any Actions on Project Page */
+button {
+    padding: 12px 20px;
+    background-color: #290907; /* Dark red */
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 2rem;
+}
+
+button:hover {
+    background-color: #6E8658; /* Soft greenish on hover */
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Section Highlight on Navigation */
+section {
+    padding: 2rem;
+    background: #D0D5CE; /* Light grayish-green */
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Make project page responsive */
+@media (max-width: 768px) {
+    .project-container {
+        padding: 1rem;
+    }
+
+    .content {
+        padding: 2rem;
+    }
+
+    .project-nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+/* Base Styles for the Host (custom color palette) */
+:host {
+    --bright-blue: #73A1B2; /* Soft blue */
+    --electric-violet: #6E8658; /* Soft greenish */
+    --vivid-pink: #290907; /* Dark red */
+    --gray-900: #290907; /* Dark red */
+    --gray-700: #57473A; /* Warm brownish tone */
+    --gray-200: #EFE9E1; /* Soft beige */
+    --gray-100: #D0D5CE; /* Light grayish-green */
+
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* General Card Styles */
+.card {
+    width: 30%; /* Maintain card width but make it responsive */
+    background-color: #EFE9E1; /* Soft beige */
+    border-radius: 12px; /* Slightly rounded corners */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Softer, deeper shadow */
+    padding: 1.75rem; /* Adjust padding for more breathing room */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem; /* Add space between cards */
+  }
+  
+.card:hover {
+transform: translateY(-10px); /* Slight hover effect */
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Card Header */
+.card-header {
+font-size: 1.75rem;
+color: #290907; /* Dark red */
+font-weight: 600;
+margin-bottom: 0.75rem;
+letter-spacing: 0.05rem;
+text-transform: capitalize;
+border-bottom: 2px solid #D0D5CE; /* Soft border color */
+padding-bottom: 0.5rem;
+}
+
+/* Card Body */
+.card-body {
+font-size: 1rem;
+color: #57473A; /* Warm brownish tone */
+margin-bottom: 1.5rem;
+line-height: 1.5;
+padding-bottom: 1rem; /* Allow some space before the footer */
+}
+
+/* Card Footer */
+.card-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 16px 0;
+border-top: 2px solid #D0D5CE; /* Soft border color */
+}
+
+.card-footer .status {
+padding: 6px 14px;
+background-color: #73A1B2; /* Soft blue */
+color: white;
+border-radius: 20px;
+font-weight: 500;
+text-transform: uppercase;
+font-size: 0.875rem;
+}
+
+/* Mat Grid Tile - Cards within grid layout */
+mat-grid-tile {
+background: #D0D5CE; /* Light grayish-green */
+padding: 1rem;
+border-radius: 12px;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for grid items */
+}
+
+/* Card Actions */
+.card-footer button {
+background-color: #73A1B2; /* Soft blue */
+color: white;
+border: none;
+padding: 8px 16px;
+font-size: 1rem;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.card-footer button:hover {
+background-color: #6E8658; /* Soft greenish on hover */
+}
+
+.card-footer button:active {
+transform: translateY(2px); /* Slight push-down on click */
+}
+
+.card-footer button:focus {
+outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.card {
+    width: 100%; /* Make cards full-width on small screens */
+    padding: 1rem;
+    margin-bottom: 1.5rem; /* Increase space between cards */
+}
+
+.card-header {
+    font-size: 1.5rem;
+    text-align: center; /* Center the header text on smaller screens */
+}
+
+.card-body {
+    font-size: 0.95rem; /* Adjust font size slightly */
+}
+
+.card-footer .status {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+mat-grid-list {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
+}
+
+/* Custom Styles for Grid Layout */
+mat-grid-list {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Auto grid layout */
+gap: 1.5rem; /* Adjusted for consistent spacing */
+padding: 2rem 0; /* Add padding to the grid */
+}

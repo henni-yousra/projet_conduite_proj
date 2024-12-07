@@ -1,32 +1,63 @@
-import { Component, Input } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { Project } from '../model/project';
 import { text } from 'express';
 import { RequestService } from '../request.service';
 import { Router } from '@angular/router';
+import { User } from '../model/user';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-project-page',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule, RouterModule],
   templateUrl: './project-page.component.html',
   styleUrl: './project-page.component.css',
   providers:[RequestService]
 })
-export class ProjectPageComponent 
+export class ProjectPageComponent implements OnInit
 {
   @Input() id!: number;
+  project!: Project | null;
+  users: User[] = [];
 
-  project = {id:this.id, name:"", description:""}
+  constructor(private route: ActivatedRoute, private reqSvc: RequestService, private router: Router){ }
 
-  constructor(private reqSvc: RequestService, private router: Router)
-  {
-    this.reqSvc.getProjects().then((res) => 
-      {
-        this.project = res.find((proj) => proj.id == this.id)!;
+  ngOnInit(): void {
+    const projectId = this.route.snapshot.paramMap.get('id');
+    if (projectId) {
+      this.reqSvc.getProject(+projectId).then((project) => {
+        this.project = project;
+        this.project.id = +projectId; // turns the string into a number
+        console.log('Project:', this.project);
       });
-    //this.reqSvc.getProject(this.id).then((res) => this.project = res);
+    }
+
+    this.reqSvc.getUsers().then((users) => {
+      this.users = users;
+    });
+  }
+
+  addMember(user: User): void {
+    if (this.project) {
+      this.project.members.push(user);
+      // Optionally, update the project on the server
+      this.reqSvc.updateProject(this.project).then(() => {
+        console.log('Project updated');
+      });
+    }
+  }
+
+
+  onTileClick(id: number | undefined)
+  {
+    //console.log("Clicked on project : ",this.project?.id);
+    console.log("Clicked on project : ",id);
+    console.log("--Clicked on project : ",this.project?.id);
+    console.log("Clicked on project : ",this.project?.name);
+    //nagivate to the page given as parameter
+    //this.router.navigate([page, this.project?.id]);
   }
 
   // Function to navigate back to the dashboard page

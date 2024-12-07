@@ -13,10 +13,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
+import { ProjectPageComponent } from './project-page/project-page.component';
+import { MembersComponent } from './members/members.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    
     RegisterComponent,
     LoginComponent
   ],
@@ -29,7 +31,9 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    RouterModule,
+    MembersComponent
   ],
   providers: [],
 })

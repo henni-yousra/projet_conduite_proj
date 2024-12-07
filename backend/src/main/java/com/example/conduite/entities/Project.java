@@ -58,6 +58,10 @@ public class Project {
         return members;
     }
 
+    public void addMembers(List<AppUser> users) {
+        members.addAll(users);
+    }
+
     public void setName(String name) {
         this.name = name;
     }

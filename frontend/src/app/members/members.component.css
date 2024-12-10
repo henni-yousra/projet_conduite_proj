@@ -362,3 +362,11 @@ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Auto grid layou
 gap: 1.5rem; /* Adjusted for consistent spacing */
 padding: 2rem 0; /* Add padding to the grid */
 }
+
+.scrum-master {
+    background-color: #1E3A5F; /* Marine blue */
+    color: white;
+    border-radius: 8px;
+    padding: 8px;
+}
+

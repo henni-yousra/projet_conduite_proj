@@ -58,11 +58,28 @@ export class RequestService {
 	}
 
 
-	async getMembers(projectId: number): Promise<User[]> {
+	/* async getMembers(projectId: number): Promise<User[]> {
 		const url = `/projects/${projectId}/getMembers`;
+		console.log("getMembers : ", url);
 		return this.http.get<User[]>(url).toPromise().then(users => users ?? []);
-	}
+	} */
 
+
+	async getMembers(projectId: number): Promise<{ members: User[] }> {
+		const url = `/projects/${projectId}/getMembers`;
+		console.log(`Fetching members for project ID: ${projectId}, URL: ${url}`);
+		return this.http.get<{ members: User[] }>(url).toPromise()
+			.then(response => {
+				console.log('Fetched Members:', response);
+				return response ?? { members: [] }; // Ensure we return an object with a `members` property
+			})
+			.catch(error => {
+				console.error('Error fetching members:', error);
+				return { members: [] }; // Return an empty array of members in case of an error
+			});
+	}
+	
+		
 
 	async addMembersToProject(projectId: number, members: User[]): Promise<any> {
 		const url = `/projects/${projectId}/addMembers`;

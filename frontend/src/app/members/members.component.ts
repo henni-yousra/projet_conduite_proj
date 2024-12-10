@@ -22,7 +22,7 @@ import { UsersCardComponent } from '../users-card/users-card.component';
 	styleUrl: './members.component.css'
 })
 export class MembersComponent implements OnInit {
-	@Input() members: User[] = [];
+	members: User[] = [];
 	@Input() users: User[] = [];
 	project!: Project | null;
 	selectedUsers: User[] = [];
@@ -30,32 +30,42 @@ export class MembersComponent implements OnInit {
 
 	constructor(private route: ActivatedRoute, private reqSvc: RequestService, private router: Router) { }
 
-	ngOnInit(): void {
+	async ngOnInit(): Promise<void> {
 		const projectId = this.route.snapshot.paramMap.get('id');
 		console.log('Project ID:', projectId);
+	  
 		if (projectId) {
-			this.reqSvc.getProject(+projectId).then((project) => {
-				this.project = project;
-				this.project.id = +projectId; // turns the string into a number
-				console.log('Project:', this.project);
-			});
+			// Wait for project details
+			this.project = await this.reqSvc.getProject(+projectId);
+			this.project.id = +projectId; // Ensure project ID is a number
+			console.log('Project:', this.project);
+	  
+			// Wait for members and access the members array from the response object
+			const membersResponse = await this.reqSvc.getMembers(+projectId);
+			this.members = membersResponse.members; // Now this.members will be an array of User
+	  
+			console.log('--Members Response:', this.members);
 		}
-
-		// get all users
-		this.reqSvc.getUsers().then((users) => {
-			console.log('Users Response:', users);
-    		this.users = Array.isArray(users) ? users : [];
-		});
-
-		// get all members
-		if (projectId) {
-			this.reqSvc.getMembers(+projectId).then((members) => {
-				console.log('Members Response:', members);
-    			this.members = Array.isArray(members) ? members : [];
-			});
-		}
+	  
+		// Wait for users
+		const usersResponse = await this.reqSvc.getUsers();
+		this.users = Array.isArray(usersResponse) ? usersResponse : [];
+		console.log('--Users Response:', this.users);
+		console.log('---Members:', this.members);
+	  
 		this.selectedUsers = [];
 	}
+	
+	
+
+	async reloadMembers(): Promise<void> {
+		if (this.project?.id !== undefined) {
+			const membersResponse = await this.reqSvc.getMembers(this.project!.id);
+			this.members = Array.isArray(membersResponse) ? membersResponse : [];
+			console.log('Reloaded Members:', this.members);
+		}
+	}
+	
 
 	trackByMemberId(index: number, member: User): number {
 		return member.id;
@@ -76,7 +86,7 @@ export class MembersComponent implements OnInit {
 		}
 
 		// Add these members to the project
-		if (this.project?.id !== undefined) {
+		/* if (this.project?.id !== undefined) {
 			console.log('proj good');
 			this.reqSvc.addMembersToProject(this.project.id, this.selectedUsers);
 		}
@@ -86,12 +96,21 @@ export class MembersComponent implements OnInit {
 		if (!this.members.some(member => member.id === user.id)) {
 			this.members.push(user);
 		}
-		});
+		}); */
+
+		if (this.project?.id !== undefined) {
+			this.reqSvc.addMembersToProject(this.project.id, this.selectedUsers)
+				.then(async () => {
+					// Re-fetch members after adding
+					await this.reloadMembers();
+				});
+		}
 
 		// Reset the selected property and reset the selected users
 		this.users.forEach(user => user.selected = false);
 		this.selectedUsers = [];
 		console.log('Selected Users reset:', this.selectedUsers);
+		console.log('Members :', this.members);
 	}
 
 	// Function to navigate back to the dashboard page

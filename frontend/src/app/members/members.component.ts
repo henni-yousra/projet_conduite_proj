@@ -60,9 +60,8 @@ export class MembersComponent implements OnInit {
 
 	async reloadMembers(): Promise<void> {
 		if (this.project?.id !== undefined) {
-			const membersResponse = await this.reqSvc.getMembers(this.project!.id);
-			this.members = Array.isArray(membersResponse) ? membersResponse : [];
-			console.log('Reloaded Members:', this.members);
+			const membersResponse = await this.reqSvc.getMembers(+this.project?.id);
+			this.members = membersResponse.members; // Now this.members will be an array of User
 		}
 	}
 	

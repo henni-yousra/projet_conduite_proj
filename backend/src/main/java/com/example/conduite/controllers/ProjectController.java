@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -73,8 +74,8 @@ public class ProjectController {
         return project;
     }
 
-    @PostMapping("/{id}/addMembers")
-    public ResponseEntity<Map<String, String>> addMembers(@RequestBody Map<String, String> membersToAdd) {
+    /* @PostMapping("/{id}/addMembers")
+    public ResponseEntity<Map<String, String>> addMemberS(@RequestBody Map<String, String> membersToAdd) {
         System.out.println("Adding members to the project...");
         Map<String, String> response = new HashMap<>();
         Long id = Long.valueOf(membersToAdd.get("projectId"));
@@ -83,32 +84,40 @@ public class ProjectController {
         
         List<AppUser> users = projectService.getUsersByIds(membersToAdd.get("members"));
 
-
-
         project.addMembers(users);
         System.out.println("Members to add to the project: " + users);
         projectService.addMembersToProject(Long.valueOf(project.getId()), users);
         projectRepo.save(project);
         response.put("message", "Members added successfully.");
         return ResponseEntity.ok(response);
+    } */
+
+
+    @GetMapping("/{id}/getMembers")
+    public ResponseEntity<Map<String, Object>> getMembers(@PathVariable Long id) {
+        Project project = projectRepo.getReferenceById(id);
+        System.out.println("Project ID: " + project.getId());
+        Map<String, Object> response = new HashMap<>();
+        System.out.println("Members of the project: " + project.projectMembers());
+        response.put("members", project.projectMembers());
+        return ResponseEntity.ok(response);
     }
 
-
-    /* public void addMembers(@RequestParam Long id, @RequestParam Long userId) {
+    @PostMapping("/{id}/addMembers")
+    public ResponseEntity<Map<String, String>> addMembersToProject(@PathVariable Long id, @RequestBody List<AppUser> users) {
+        System.out.println("Adding members to the project...");
+        Map<String, String> response = new HashMap<>();
         Project project = projectRepo.getReferenceById(id);
-        AppUser user = entityManager.getReference(AppUser.class, userId);
-        project.addMember(user);
+        // append this list to the project's members list
+        project.addMembers(users);
+        System.out.println("Members to add to the project: " + users);
+        System.out.println("Project ID: " + project.getId());
+        //projectService.addMembersToProject(Long.valueOf(project.getId()), users);
         projectRepo.save(project);
-    } */
+        response.put("message", "Members added successfully.");
+        return ResponseEntity.ok(response);
+    }
 
-
-
-    /* @GetMapping("/members")
-    public List<AppUser> getMembers(@RequestParam Long id) {
-        Project project = projectRepo.getReferenceById(id);
-        System.out.println("Project found: " + project.getName());
-        return project.projectMembers();
-    } */
 
 /*     @PostMapping("/deleteProject/{id}")
     @Transactional

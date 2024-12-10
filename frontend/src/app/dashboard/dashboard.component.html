@@ -3,7 +3,7 @@
   <button class="logout-btn" (click)="logout()">Logout</button>
     <div class="content">  
 
-        <h1>Welcom to your dashboard </h1>         <!-- Logout Button --> <!-- , {{ userName }}! -->
+        <h1>Welcom to your dashboard!</h1>         <!-- Logout Button --> <!-- , {{ userName }}! -->
         <p> Welcome to Scrumming ! </p>
         <!--sends data to projects card-->
         <app-home [users]="users" [projects]="projects" (createProject)="onCreateProject($event)"></app-home>    

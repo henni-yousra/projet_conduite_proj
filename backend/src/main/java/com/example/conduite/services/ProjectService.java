@@ -1,6 +1,9 @@
 package com.example.conduite.services;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.plaf.synth.SynthStyle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -47,56 +50,59 @@ public class ProjectService {
         System.out.println("Project added to the database: Name - " + name + ", Description - " + description);
     }
 
-    public void addMembersToProject(Long projId, List<AppUser> users) {
-        /* String Values = "";
-        for (AppUser user : users) {
-            Values += "(" + projId + "," + user.getId() +  "," + user.getRole() + "),";
-        }
-
-        String sql = "INSERT INTO dbConduiteProj.projectmembers (project_id, user_id, role) VALUES" +  Values + ";";
-        jdbcTemplate.update(sql);  
-        System.out.println("Members added to the project: " + users.size()); */    
+    public void addMembersToProject(Long projId, List<AppUser> users) {   
         if (users == null || users.isEmpty()) {
             System.out.println("No members to add.");
             return;
         }
+        if (!projectRepository.existsById(projId)) {
+            System.out.println("Project not found");
+            return;
+        }
 
-        StringBuilder sql = new StringBuilder("INSERT INTO dbConduiteProj.projectmembers (project_id, user_id, role) VALUES ");
-        StringBuilder values = new StringBuilder();
+        System.out.println("Incoming users: " + users);
+        for (AppUser user : users) {
+            System.out.println("User role: " + user.getRole());
+        }
+
+        /* StringBuilder sql = new StringBuilder("INSERT INTO dbConduiteProj.projectmembers (project_id, user_id, role) VALUES ");
+        StringBuilder values = new StringBuilder(); */
+        //ArrayList<String> params = new ArrayList<>();
 
         for (AppUser user : users) {
-            values.append("(?, ?, ?),");
+            //values.append("(?,?,?),");
+            //values.append("(" + projId + "," + user.getId() +  "," + "'" + user.getRole() + "'" + "),");
+            /* params.add(projId.toString());
+            params.add(user.getId().toString());
+            params.add(user.getRole()); */
+            jdbcTemplate.update("INSERT INTO dbConduiteProj.projectmembers (project_id, user_id) VALUES (?,?) ;", projId, user.getId());
         }
 
         // Remove the trailing comma
-        values.setLength(values.length() - 1);
+        /* values.setLength(values.length() - 1);
+        System.out.println("Values: " + values);
+        System.out.println("Values length: " + values.length());
 
         sql.append(values);
+        sql.append(";");
 
-        // Prepare the parameters
-        Object[] params = new Object[users.size() * 3];
-        int index = 0;
+        System.out.println("SQL: " + sql); */
+
+        // check if the users arent already in the project
+        /* Project project = projectRepository.findById(projId).get();
+        List<AppUser> members = project.getMembers();
         for (AppUser user : users) {
-            params[index++] = projId;
-            params[index++] = user.getId();
-            params[index++] = user.getRole();
-        }
-
-        jdbcTemplate.update(sql.toString(), params);
-        System.out.println("Members added to the project: " + users.size());
-    }
-
-    public List<AppUser> getUsersByIds(String string) {
-        // this string is of the form : [{"id":34,"name":"Odysseus","email":"odysseus@example.com","role":"SCRUM_MASTER","password":"w","selected":true},{"id":35,"name":"Dok","email":"dok@example.com","role":"MEMBER","password":"w","selected":true},{"id":36,"name":"Darwin","email":"darwin@example.com","role":"MEMBER","password":"w","selected":true},{"id":37,"name":"Wolf","email":"wolf@example.com","role":"MEMBER","password":"w","selected":true}]
-
-        // remove the square brackets
-        string = string.substring(1, string.length() - 1);
-
-        // split the string by commas
-        String[] parts = string.split(",");
-        List<AppUser> users = appUserService.findAllById(parts);
-
-        return users;
+            if (members.contains(user)) {
+                System.out.println("User already in the project: " + user.getName());
+                return;
+            }
+        } */
+        
+        /* for(String param: params) {
+            System.out.println("Param: " + param);
+        } */
+        //jdbcTemplate.update(sql, params.toArray(new String[params.size()]));
+        System.out.println("Members added to the project: " + projectRepository.findById(projId).get().getName());
     }
 
 }

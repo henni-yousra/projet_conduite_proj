@@ -30,9 +30,10 @@ public class Project {
 
     @ManyToMany
     @JoinTable(
-      name = "project_user", 
-      joinColumns = @JoinColumn(name = "proj_id"), 
-      inverseJoinColumns = @JoinColumn(name = "user_id"))
+        name = "projectmembers",
+        joinColumns = @JoinColumn(name = "project_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<AppUser> members;  // List of users assigned to the project
 
     public Project() {}
@@ -57,7 +58,7 @@ public class Project {
     public List<AppUser> projectMembers() {
         return members;
     }
-
+    
     public void addMembers(List<AppUser> users) {
         members.addAll(users);
     }

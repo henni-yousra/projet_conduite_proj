@@ -27,11 +27,11 @@ export class DashboardComponent implements OnInit {
 
   projects: Project[] = [];
   users: User[] = [];
-  //userName: string | null = '';
+  userName: string | null = '';
 
   ngOnInit()
   {
-    //this.userName = localStorage.getItem('user_name');
+    this.userName = localStorage.getItem('user_name');
     
     this.reqSvc.getProjects().then((res) => {
       this.projects = res;

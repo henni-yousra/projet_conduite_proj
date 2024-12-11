@@ -57,14 +57,6 @@ export class RequestService {
 		return data;
 	}
 
-
-	/* async getMembers(projectId: number): Promise<User[]> {
-		const url = `/projects/${projectId}/getMembers`;
-		console.log("getMembers : ", url);
-		return this.http.get<User[]>(url).toPromise().then(users => users ?? []);
-	} */
-
-
 	async getMembers(projectId: number): Promise<{ members: User[] }> {
 		const url = `/projects/${projectId}/getMembers`;
 		console.log(`Fetching members for project ID: ${projectId}, URL: ${url}`);
@@ -79,12 +71,17 @@ export class RequestService {
 			});
 	}
 	
-		
 
 	async addMembersToProject(projectId: number, members: User[]): Promise<any> {
 		const url = `/projects/${projectId}/addMembers`;
 		const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 		console.log("addMembersToProject : ", members);
 		return this.http.post(url, members, { headers }).toPromise();
+	}
+
+	async deleteProject(id: number): Promise<void> {
+		const url = `/projects/deleteProject/${id}`;
+		const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		return this.http.delete<void>(url, { headers }).toPromise();
 	}
 }

@@ -59,6 +59,11 @@ export class MembersComponent implements OnInit {
 	
 
 	async reloadMembers(): Promise<void> {
+		/**
+		 * This function is used to reload the members array after adding members to the project.
+		 * 'SCRUM_MASTER' : blue marine
+		 * 'MEMBER' : soft beige
+		 */
 		if (this.project?.id !== undefined) {
 			const membersResponse = await this.reqSvc.getMembers(+this.project?.id);
 			this.members = membersResponse.members; // Now this.members will be an array of User
@@ -83,19 +88,6 @@ export class MembersComponent implements OnInit {
 			this.members = [];
 			console.log('Members initialized:', this.members);
 		}
-
-		// Add these members to the project
-		/* if (this.project?.id !== undefined) {
-			console.log('proj good');
-			this.reqSvc.addMembersToProject(this.project.id, this.selectedUsers);
-		}
-		console.log('Members added to the project');
-
-		this.selectedUsers.forEach(user => {
-		if (!this.members.some(member => member.id === user.id)) {
-			this.members.push(user);
-		}
-		}); */
 
 		if (this.project?.id !== undefined) {
 			this.reqSvc.addMembersToProject(this.project.id, this.selectedUsers)

@@ -91,7 +91,7 @@ p {
 /* Button Style for Any Actions on Project Page */
 button {
     padding: 12px 20px;
-    background-color: #290907; /* Dark red */
+    background-color: #73A1B2; /* Dark red */
     color: white;
     font-size: 1rem;
     border: none;
@@ -99,6 +99,21 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 2rem;
+}
+
+.delete-project-btn {
+    background-color: #f61003; 
+    font-size: 1.125rem;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.delete-project-btn:hover {
+    background-color: #370603  ; /* darker red */
 }
 
 button:hover {

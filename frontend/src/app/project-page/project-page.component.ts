@@ -39,17 +39,6 @@ export class ProjectPageComponent implements OnInit
     });
   }
 
-  addMember(user: User): void {
-    if (this.project) {
-      this.project.members.push(user);
-      // Optionally, update the project on the server
-      this.reqSvc.updateProject(this.project).then(() => {
-        console.log('Project updated');
-      });
-    }
-  }
-
-
   onTileClick(id: number | undefined)
   {
     //console.log("Clicked on project : ",this.project?.id);
@@ -64,6 +53,16 @@ export class ProjectPageComponent implements OnInit
   goBack() {
     // Navigate to the dashboard page
     this.router.navigate(['/dashboard']);
+  }
+
+  deleteProject() {
+    // Delete the project
+    if (this.project) {
+      this.reqSvc.deleteProject(this.project?.id).then(() => {
+        // Navigate to the dashboard page
+        this.router.navigate(['/dashboard']);
+      });
+    }
   }
 
 }

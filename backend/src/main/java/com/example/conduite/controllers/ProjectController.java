@@ -74,25 +74,6 @@ public class ProjectController {
         return project;
     }
 
-    /* @PostMapping("/{id}/addMembers")
-    public ResponseEntity<Map<String, String>> addMemberS(@RequestBody Map<String, String> membersToAdd) {
-        System.out.println("Adding members to the project...");
-        Map<String, String> response = new HashMap<>();
-        Long id = Long.valueOf(membersToAdd.get("projectId"));
-        Project project = projectRepo.getReferenceById(id);
-        // append this list to the project's members list
-        
-        List<AppUser> users = projectService.getUsersByIds(membersToAdd.get("members"));
-
-        project.addMembers(users);
-        System.out.println("Members to add to the project: " + users);
-        projectService.addMembersToProject(Long.valueOf(project.getId()), users);
-        projectRepo.save(project);
-        response.put("message", "Members added successfully.");
-        return ResponseEntity.ok(response);
-    } */
-
-
     @GetMapping("/{id}/getMembers")
     public ResponseEntity<Map<String, Object>> getMembers(@PathVariable Long id) {
         Project project = projectRepo.getReferenceById(id);
@@ -112,17 +93,22 @@ public class ProjectController {
         project.addMembers(users);
         System.out.println("Members to add to the project: " + users);
         System.out.println("Project ID: " + project.getId());
-        //projectService.addMembersToProject(Long.valueOf(project.getId()), users);
+        /* saves the modified project to the database
+         * because of @ManyToMany @JoinTable
+         */
         projectRepo.save(project);
         response.put("message", "Members added successfully.");
         return ResponseEntity.ok(response);
     }
 
 
-/*     @PostMapping("/deleteProject/{id}")
+    @PostMapping("/deleteProject/{id}")
     @Transactional
-    public String deleteProject(@PathVariable Long id) {
-        projectRepo.deleteById(id);
-        return "redirect:/index";
-    } */
+    public ResponseEntity<Map<String, String>> deleteProject(@PathVariable Long id) {
+        Map<String, String> response = new HashMap<>();
+        System.out.println("Deleting project with ID: " + id);
+        projectService.deleteProject(id);
+        response.put("message", "Members added successfully.");
+        return ResponseEntity.ok(response);
+    }
 }

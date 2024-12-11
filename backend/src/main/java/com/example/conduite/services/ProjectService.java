@@ -50,59 +50,11 @@ public class ProjectService {
         System.out.println("Project added to the database: Name - " + name + ", Description - " + description);
     }
 
-    public void addMembersToProject(Long projId, List<AppUser> users) {   
-        if (users == null || users.isEmpty()) {
-            System.out.println("No members to add.");
-            return;
-        }
-        if (!projectRepository.existsById(projId)) {
-            System.out.println("Project not found");
-            return;
-        }
-
-        System.out.println("Incoming users: " + users);
-        for (AppUser user : users) {
-            System.out.println("User role: " + user.getRole());
-        }
-
-        /* StringBuilder sql = new StringBuilder("INSERT INTO dbConduiteProj.projectmembers (project_id, user_id, role) VALUES ");
-        StringBuilder values = new StringBuilder(); */
-        //ArrayList<String> params = new ArrayList<>();
-
-        for (AppUser user : users) {
-            //values.append("(?,?,?),");
-            //values.append("(" + projId + "," + user.getId() +  "," + "'" + user.getRole() + "'" + "),");
-            /* params.add(projId.toString());
-            params.add(user.getId().toString());
-            params.add(user.getRole()); */
-            jdbcTemplate.update("INSERT INTO dbConduiteProj.projectmembers (project_id, user_id) VALUES (?,?) ;", projId, user.getId());
-        }
-
-        // Remove the trailing comma
-        /* values.setLength(values.length() - 1);
-        System.out.println("Values: " + values);
-        System.out.println("Values length: " + values.length());
-
-        sql.append(values);
-        sql.append(";");
-
-        System.out.println("SQL: " + sql); */
-
-        // check if the users arent already in the project
-        /* Project project = projectRepository.findById(projId).get();
-        List<AppUser> members = project.getMembers();
-        for (AppUser user : users) {
-            if (members.contains(user)) {
-                System.out.println("User already in the project: " + user.getName());
-                return;
-            }
-        } */
+    public void deleteProject(Long projId) {
         
-        /* for(String param: params) {
-            System.out.println("Param: " + param);
-        } */
-        //jdbcTemplate.update(sql, params.toArray(new String[params.size()]));
-        System.out.println("Members added to the project: " + projectRepository.findById(projId).get().getName());
+        String sql = "DELETE INTO dbConduiteProj.project WHERE projid = ?";
+        jdbcTemplate.update(sql, projId);
+        System.out.println("Project deleted from the database: ID - " + projId);
     }
 
 }

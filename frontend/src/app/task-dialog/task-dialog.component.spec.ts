@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskDialogComponent } from './task-dialog.component';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TaskDialogComponent', () => {
   let component: TaskDialogComponent;
@@ -8,7 +10,9 @@ describe('TaskDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TaskDialogComponent]
+      imports: [TaskDialogComponent, MatDialogModule, BrowserAnimationsModule],
+      providers: [{provide: MatDialogRef, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: []}]
     })
     .compileComponents();
 

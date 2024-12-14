@@ -24,7 +24,7 @@ import { MatListModule } from '@angular/material/list';
 })
 export class IssuesComponent {
 	project!: Project | null;
-	issues: { name: string, id: string ,description: string }[] = [];
+	issues: { name: string, id: string , description: string , projId: number}[] = [];
 
 	constructor(private route: ActivatedRoute, private reqSvc: RequestService, private router: Router, public dialog: MatDialog) { }
 
@@ -39,7 +39,8 @@ export class IssuesComponent {
 			this.project.id = +projectId; // Ensure project ID is a number
 			console.log('Project:', this.project);
 		}
-
+		
+		// this.issues = await this.reqSvc.getIssues();
 	}
 
 	/* openDialog(): void {
@@ -63,7 +64,8 @@ export class IssuesComponent {
 				{
 					name: result.issueName,
 					id: result.issueId,
-					description: result.issueDescription
+					description: result.issueDescription,
+					projId: this.project?.id as number
 				}
 			);
 			}

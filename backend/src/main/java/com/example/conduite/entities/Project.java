@@ -41,10 +41,15 @@ public class Project {
     @JsonManagedReference
     private List<AppUser> members;  // List of users assigned to the project
 
-    /*
-     * Besoins 
-     * Taches
-     * 
+    /* TODO :
+     * Issues
+     *  list of issues 
+     * private List<<String,String,String>> issues;
+     * Tasks
+     *  list of tasks linked to the an issue
+     * private List<String,<String,String,String>> tasks;
+     * Documentation
+     *  project documentation
      */
 
     public Project() {}

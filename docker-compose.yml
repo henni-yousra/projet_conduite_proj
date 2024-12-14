@@ -1,0 +1,37 @@
+services:
+  postgres:
+    container_name: cdp-postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=user
+      - POSTGRES_DB=db
+
+  back:
+    container_name: cdp-back
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    # environment:
+    # volumes:
+    #   - ./api/src:/app/src
+    depends_on:
+      - postgres
+
+  front:  
+    container_name: cdp-front
+    build: 
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    # environment:
+    # volumes:
+    #   - ./api/src:/app/src
+    depends_on:
+      - back
+
+# volumes:
+#   cdp:

@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Name your project</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Issue name</mat-label>
+    <input matInput [(ngModel)]="data.issueName" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Issue Description</mat-label>
+    <input matInput [(ngModel)]="data.issueDescription" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Issue id</mat-label>
+    <input matInput [(ngModel)]="data.issueId" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <!-- <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button> -->
+</mat-dialog-actions>

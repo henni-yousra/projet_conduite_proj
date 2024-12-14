@@ -2,7 +2,6 @@ FROM maven
 WORKDIR /app
 COPY pom.xml .
 COPY src src
-# RUN mvn compile
-RUN ls
-RUN mvn -X spring-boot:run
+RUN mvn compile
 EXPOSE 5000
+CMD ["mvn", "spring-boot:run"]

@@ -1,14 +1,16 @@
 services:
-  postgres:
-    container_name: cdp-postgres
+  pgsql:
+    container_name: pgsql
     image: postgres:latest
     environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=user
-      - POSTGRES_DB=db
+      - POSTGRES_PASSWORD=KokaBDAA
+      - POSTGRES_USER=abdouldiallo
+      - POSTGRES_DB=abdouldiallo
+    ports:
+      - "5432:5432"
 
   back:
-    container_name: cdp-back
+    container_name: back
     build:
       context: backend
       dockerfile: Dockerfile
@@ -18,10 +20,10 @@ services:
     # volumes:
     #   - ./api/src:/app/src
     depends_on:
-      - postgres
+      - pgsql
 
   front:  
-    container_name: cdp-front
+    container_name: front
     build: 
       context: frontend
       dockerfile: Dockerfile

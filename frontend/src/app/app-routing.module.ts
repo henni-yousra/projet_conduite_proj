@@ -7,6 +7,7 @@ import { ProjectPageComponent } from './project-page/project-page.component';
 import { UsersCardComponent } from './users-card/users-card.component';
 import { MembersComponent } from './members/members.component';
 import { IssuesComponent } from './issues/issues.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -16,9 +17,10 @@ export const routes: Routes = [
     { path: 'project/:id', title:'Project Page', component: ProjectPageComponent }, 
     { path: 'members/:id', title:'Project Members', component: MembersComponent },
     { path: 'issues/:id', title:'Project Issues', component: IssuesComponent },
+    { path: 'tasks/:id', title: 'Issue Tasks',component: TasksComponent },
+    { path : ':id/tasks/this.data.id', title: 'Issue Tasks', component: TasksComponent },
     /**
      * paths for Besoins Tâches, Documentation, Release, Sprints of each project
-     * { path: 'Members', component: UserCardComponent },
      * { path: 'Tâches/:id', component: TâcheComponent },
      * { path: 'Documentation/:id', component: DocumentationComponent },
      * { path: 'Release/:id', component: ReleaseComponent },

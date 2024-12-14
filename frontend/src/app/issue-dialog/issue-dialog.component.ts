@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, model} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, inject, model} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {
@@ -11,12 +11,14 @@ import {
 } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { Router } from '@angular/router';
 
 
 export interface IssueDialogData {
   issueName: string;
   issueId: string; // US1 ...
   issueDescription: string;
+  projId: number;
 }
 
 
@@ -38,8 +40,12 @@ export interface IssueDialogData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IssueDialogComponent {
-  readonly dialogRef = inject(MatDialogRef<IssueDialogComponent>);
-  readonly data = inject<IssueDialogData>(MAT_DIALOG_DATA);
+  constructor(
+    public dialogRef: MatDialogRef<IssueDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IssueDialogData,
+    private router: Router
+  ) {}
+
   /* issue = { name: '', description: '' };
 
   constructor(public dialogRef: MatDialogRef<IssueDialogComponent>) {}
@@ -51,4 +57,10 @@ export class IssueDialogComponent {
   onSaveClick(): void {
     this.dialogRef.close(this.issue); 
   }*/
+
+    // TODO : clicking on "Tasks" from the issue dialog should navigate to the tasks page
+  navigateToTasks(): void {
+    this.dialogRef.close();
+    this.router.navigate([this.data.projId,'/tasks', this.data.issueId]);
+  }
 }

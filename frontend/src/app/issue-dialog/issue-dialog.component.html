@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Name your project</h2>
+<h2 mat-dialog-title>Name your Issue</h2>
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Issue name</mat-label>
@@ -14,6 +14,7 @@
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
+  <button mat-button (click)="navigateToTasks()">Tasks</button> <!-- Add a button to navigate to the tasks page -->
   <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
   <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
   <!-- <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button> -->

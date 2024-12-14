@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { Project } from './model/project';
 import { User } from './model/user';
 import { RequestService } from './request.service';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

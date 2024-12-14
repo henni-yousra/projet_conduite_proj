@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { catchError, of } from 'rxjs';
 
 export interface User {
   name: string;

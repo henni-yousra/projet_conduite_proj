@@ -1,0 +1,18 @@
+FROM node:lts-alpine
+RUN apk add chromium
+ENV CHROME_BIN=/usr/bin/chromium-browser
+# Create a group and user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+# Tell docker that all future commands should run as the appuser user
+USER appuser
+
+WORKDIR /app
+COPY --chown=appuser:appuser package*.json .
+COPY --chown=appuser:appuser tsconfig*.json .
+COPY --chown=appuser:appuser angular.json .
+COPY --chown=appuser:appuser karma.conf.js .
+COPY --chown=appuser:appuser src src
+RUN npm install
+EXPOSE 4200
+# CMD ["npm", "run", "start"]
+CMD ["npm", "run", "test"]

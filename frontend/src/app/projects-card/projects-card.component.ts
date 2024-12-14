@@ -4,7 +4,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButton} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { Output, EventEmitter } from '@angular/core';
-import { Project } from '../model/projet';
+import { Project } from '../model/project';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,8 +28,8 @@ export class ProjectsCardComponent
 
   onTileClick(id: number)
   {
-    //const project = this.projects.find((proj) => proj.id == id);
-    //console.log(project?.id);
+    const project = this.projects.find((proj) => proj.id == id);
+    console.log("Clicked on project : ",project?.id);
     this.router.navigate(['/project', id]);
   }
 }

@@ -1,0 +1,28 @@
+<main class="main">
+  <div class="issues-container">
+    <h1>Issues</h1>
+    <div class="content">
+      <p>Manage the issues of the {{project?.name}} project</p>
+      <p>{{project?.description}}</p>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="openCreateIssueDialog()">Add Issue</button>
+
+    <mat-card class="card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Project Issues</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-grid-list cols="2" rowHeight="2:1">
+          @for (issue of issues; track issue.id) {
+              <mat-grid-tile (click)="onTileClick(issue)">{{issue.name}}, {{issue.id}}</mat-grid-tile>
+            }
+      </mat-grid-list> 
+      </mat-card-content>
+      <mat-card-footer class="card-footer">
+      </mat-card-footer>
+    </mat-card>
+
+    <button class="back-dashboard-btn" (click)="goBack()">Back</button>
+  </div>
+</main>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.conduite.entities.AppUser;
+import com.example.conduite.entities.Project;
 import com.example.conduite.repos.AppUserRepo;
 import com.example.conduite.services.AppUserService;
 
@@ -21,17 +22,13 @@ import jakarta.persistence.EntityManager;
 @RestController
 @RequestMapping("/appusers")
 public class AppUserController {
-        private static final Logger logger = LoggerFactory.getLogger(AppUserController.class);
-
-    @Autowired
-    private AppUserRepo appUserRepo;
+    private static final Logger logger = LoggerFactory.getLogger(AppUserController.class);
 
     @Autowired
     private AppUserService appUserService;
 
     @Autowired
     private EntityManager entityManager;
-
 
     @PostConstruct
     public void init() {
@@ -40,26 +37,26 @@ public class AppUserController {
         System.out.println("All persons have been deleted.");
     }
 
-    @GetMapping("/viewUsers")
+    @GetMapping("")
     public List<AppUser> getAllAppUsers() {
         //http://localhost:5000/appusers/viewUsers
-        return appUserRepo.findAll();  // Fetch all AppUsers from the database
+        return appUserService.getAllAppUsers();  // Fetch all AppUsers from the database
     }
     
     //@PostMapping("/addUser")
     @Transactional
     public AppUser addAppUser(String name, String email, String role, String password) {
         System.out.println("Adding a new person to the table...");
-        // Add person to the database
-        AppUser appUser = new AppUser(name,email, role, password);
-        appUserRepo.save(appUser); // TODO : this line was causing problems, without it the code runs but it is needed to send the data to the mainController
-        return appUser;
+        return appUserService.addAppUser(name, email, role, password);
     }
 
     public AppUser getAppUserById(@RequestParam Long id) {
-        AppUser appUser = appUserRepo.getReferenceById(id);
-        System.out.println("Person found: " + appUser.getName());
-        return appUser;
+        return appUserService.getAppUserById(id);
     }
+
+    // TODO: list of projects that the user is a part of
+    /* public List<Project> getProjectsByAppUserId(@RequestParam Long id) {
+        return appUserService.getProjectsByAppUserId(id);
+    } */
 
 }

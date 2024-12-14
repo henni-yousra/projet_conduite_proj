@@ -4,13 +4,26 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectPageComponent } from './project-page/project-page.component';
+import { UsersCardComponent } from './users-card/users-card.component';
+import { MembersComponent } from './members/members.component';
+import { IssuesComponent } from './issues/issues.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'register', component: RegisterComponent }, 
-    { path: 'project/:id', component: ProjectPageComponent }, 
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'login', title: 'Login', component: LoginComponent },
+    { path: 'dashboard', title:'Dashboard', component: DashboardComponent },
+    { path: 'register', title:'Registration', component: RegisterComponent }, 
+    { path: 'project/:id', title:'Project Page', component: ProjectPageComponent }, 
+    { path: 'members/:id', title:'Project Members', component: MembersComponent },
+    { path: 'issues/:id', title:'Project Issues', component: IssuesComponent },
+    /**
+     * paths for Besoins Tâches, Documentation, Release, Sprints of each project
+     * { path: 'Members', component: UserCardComponent },
+     * { path: 'Tâches/:id', component: TâcheComponent },
+     * { path: 'Documentation/:id', component: DocumentationComponent },
+     * { path: 'Release/:id', component: ReleaseComponent },
+     * { path: 'Sprints/:id', component: SprintComponent },
+     */
     //{ path: '**', redirectTo: 'login' }, // Fallback route
 ];
 

@@ -1,8 +1,10 @@
 import { Component, Directive, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { Project } from './model/projet';
+import { Project } from './model/project';
+import { User } from './model/user';
 import { RequestService } from './request.service';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

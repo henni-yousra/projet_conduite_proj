@@ -2,21 +2,24 @@ import { Component, EventEmitter, inject, Input, model, Output, signal } from '@
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButton } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { ProjectsCardComponent } from '../projects-card/projects-card.component'
+import { ProjectsCardComponent } from '../projects-card/projects-card.component';
 import { CreateProjectDialogComponent, ProjectDialogData } from '../create-project-dialog/create-project-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Project } from '../model/projet';
+import { Project } from '../model/project';
+import { User } from '../model/user';
+import { UsersCardComponent } from '../users-card/users-card.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatDividerModule, MatButton, MatIconModule, ProjectsCardComponent],
+  imports: [MatDividerModule, MatButton, MatIconModule, ProjectsCardComponent, UsersCardComponent ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
 
   @Input() projects!: Project[];
+  @Input() users!: User[];
 
   readonly dialog = inject(MatDialog);
   

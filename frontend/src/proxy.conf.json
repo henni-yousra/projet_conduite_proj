@@ -2,5 +2,9 @@
     "/projects": {
       "target": "http://localhost:5000",
       "secure": false
+    },
+    "/appusers": {
+      "target": "http://localhost:5000",
+      "secure": false
     }
   }

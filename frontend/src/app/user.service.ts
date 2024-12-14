@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/viewUsers`);
+    return this.http.get(`${this.apiUrl}`);
   }
 
   registerUser(user: any): Observable<any> {

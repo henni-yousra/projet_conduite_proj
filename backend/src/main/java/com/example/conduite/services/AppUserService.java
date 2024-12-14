@@ -1,5 +1,8 @@
 package com.example.conduite.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -15,6 +18,9 @@ public class AppUserService {
     
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private AppUserRepo appUserRepo;
 
     public AppUser findByEmail(String email) {
         try {
@@ -39,6 +45,17 @@ public class AppUserService {
         jdbcTemplate.update(sql);
     }
 
+    public List<AppUser> getAllAppUsers() {
+        //http://localhost:5000/appusers/viewUsers
+        return appUserRepo.findAll();  // Fetch all AppUsers from the database
+    }
+
+    public AppUser addAppUser(String name, String email, String role, String password) {
+        AppUser appUser = new AppUser(name,email, role, password);
+        appUserRepo.save(appUser);
+        return appUser;
+    }
+
     @Transactional
     public void addPersonToDatabase(String name, String email, String role, String password) {
         System.out.println("Adding a new person to the table...");
@@ -55,9 +72,6 @@ public class AppUserService {
         jdbcTemplate.update(sql, name, email, role, password);
         System.out.println("Person added to the database: Name - " + name + ", Email - " + email + ", Role - " + role + ", Password - " + password);
     }
-
-    @Autowired
-    private AppUserRepo appUserRepo;
 
     @Transactional
     public AppUser registerUser(String name, String email, String role, String password) {
@@ -86,5 +100,19 @@ public class AppUserService {
         }
         return false;  // Invalid credentials
     }
+
+
+    public AppUser getAppUserById(Long id) {
+        AppUser appUser = appUserRepo.getReferenceById(id);
+        System.out.println("Person found: " + appUser.getName());
+        return appUser;
+    }
+
+    // TODO: list of projects that the user is a part of
+    /* public List<Project> getProjectsByAppUserId(Long id) {
+        AppUser appUser = appUserRepo.getReferenceById(id);
+        System.out.println("Person found: " + appUser.getName());
+        return appUser.getProjects();
+    } */
     
 }

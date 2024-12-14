@@ -1,0 +1,8 @@
+Notes for the commands to run in order to launch springboot or angular
+works in ssh too, opens a window
+
+FOR SpringBoot, after going down into backend :
+./mvnw clean spring-boot:run
+
+FOR Angular, after going down into frontend :
+npx ng serve

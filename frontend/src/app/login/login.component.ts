@@ -12,6 +12,8 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
+  // send the login info to all components
+
   constructor(private http: HttpClient, private router: Router) {}
 
   onLogin() {
@@ -29,6 +31,12 @@ export class LoginComponent {
       if (response.message === 'Login successful.') {
         // Store the token in localStorage or sessionStorage
         localStorage.setItem('auth_token', response.token); 
+
+        // retrieve the user name and store it in localStorage put print it on the dashboard
+        this.http.get<{ name: string }>('http://localhost:5000/auth/getName', { responseType: 'json' })
+          .subscribe((nameResponse) => {
+            localStorage.setItem('user_name', nameResponse.name);
+          });
 
         // Redirect to dashboard if login is successful
         this.router.navigate(['/dashboard']);

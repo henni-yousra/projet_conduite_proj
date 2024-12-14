@@ -2,20 +2,40 @@
     <div class="project-container">
         <!-- Project Info -->
         <div class="content">
-            <h1>Project - {{project.text}}</h1>
-            <p>Welcome to the {{project.text}} project</p>
-            <p>{{project.description}}</p>
+            <!-- Project Name and Description and "?" because it is possibly undefined-->
+            <h1>Project - {{project?.name}}</h1>
+            <p>Welcome to the {{project?.name}} project</p>
+            <p>{{project?.description}} {{project?.id}}</p>
         </div>
 
         <!-- Navigation Bar for Sections -->
         <nav class="project-nav">
             <ul>
-                <li><a>Besoins</a></li>
-                <li><a>Tâches</a></li>
-                <li><a>Documentation</a></li>
-                <li><a>Release</a></li>
-                <li><a>Sprints</a></li>
+                <!-- <li class = "nav-item"><a routerLink="/members" routerLinkActive="active" class="nav-link" (click)="onTileClick(members)">Members</a></li> -->
+                <li class="nav-item">
+                    <a [routerLink]="['/members', project?.id]" routerLinkActive="active" class="nav-link" >Members</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/issues', project?.id]" routerLinkActive="active" class="nav-link">Issues</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="" routerLinkActive="active" class="nav-link">Tasks</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="" routerLinkActive="active" class="nav-link">Documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="" routerLinkActive="active" class="nav-link">Release</a>
+                </li>
+                <li class ="nav-item">
+                    <a routerLink="" routerLinkActive="active" class="nav-link">Sprints</a>
+                </li>
+                <li></li>
             </ul>
         </nav>
+        <router-outlet></router-outlet>
+        <!--Button back to home-->
+        <button class="back-dashboard-btn" (click)="goBack()">Back</button>
+        <button class="delete-project-btn" (click)="deleteProject()">Delete Project</button>
     </div>
 </main>

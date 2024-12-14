@@ -2,6 +2,9 @@ package com.example.conduite.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,10 +33,19 @@ public class Project {
 
     @ManyToMany
     @JoinTable(
-      name = "project_user", 
-      joinColumns = @JoinColumn(name = "proj_id"), 
-      inverseJoinColumns = @JoinColumn(name = "user_id"))
+        name = "projectmembers",
+        joinColumns = @JoinColumn(name = "project_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    //@JsonIgnore // Prevents cyclic serialization, because there is a circular reference between Project and AppUser; Projects in AppUser and AppUsers in Project
+    @JsonManagedReference
     private List<AppUser> members;  // List of users assigned to the project
+
+    /*
+     * Besoins 
+     * Taches
+     * 
+     */
 
     public Project() {}
 
@@ -56,6 +68,14 @@ public class Project {
 
     public List<AppUser> projectMembers() {
         return members;
+    }
+    
+    public void addMembers(List<AppUser> users) {
+        members.addAll(users);
+    }
+
+    public void removeMembers(List<AppUser> users) {
+        members.removeAll(users);
     }
 
     public void setName(String name) {

@@ -17,6 +17,7 @@ import { ProjectPageComponent } from './project-page/project-page.component';
 import { MembersComponent } from './members/members.component';
 import { RouterModule } from '@angular/router';
 import { IssuesComponent } from './issues/issues.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { IssuesComponent } from './issues/issues.component';
     MatInputModule,
     RouterModule,
     MembersComponent,
-    IssuesComponent
+    IssuesComponent,
+    TasksComponent
   ],
   providers: [],
 })

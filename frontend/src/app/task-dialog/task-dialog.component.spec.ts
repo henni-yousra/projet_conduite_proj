@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IssueDialogComponent } from './issue-dialog.component';
+import { TaskDialogComponent } from './task-dialog.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('IssueDialogComponent', () => {
-  let component: IssueDialogComponent;
-  let fixture: ComponentFixture<IssueDialogComponent>;
+describe('TaskDialogComponent', () => {
+  let component: TaskDialogComponent;
+  let fixture: ComponentFixture<TaskDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IssueDialogComponent, MatDialogModule, BrowserAnimationsModule],
+      imports: [TaskDialogComponent, MatDialogModule, BrowserAnimationsModule],
       providers: [{provide: MatDialogRef, useValue: {}},
         {provide: MAT_DIALOG_DATA, useValue: []}]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IssueDialogComponent);
+    fixture = TestBed.createComponent(TaskDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

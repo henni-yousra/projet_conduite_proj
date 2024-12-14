@@ -19,7 +19,7 @@ import { UsersCardComponent } from '../users-card/users-card.component';
 	standalone: true,
 	imports: [RouterOutlet, CommonModule, RouterModule, MatCardModule, MatGridListModule, MatButton, MatIconModule, FormsModule, MatCheckboxModule],
 	templateUrl: './members.component.html',
-	styleUrl: './members.component.css'
+	styleUrls: ['./members.component.css', '../../styles.css'],
 })
 export class MembersComponent implements OnInit {
 	members: User[] = [];
@@ -55,7 +55,8 @@ export class MembersComponent implements OnInit {
 		console.log('---Members:', this.members);
 	  
 		this.selectedUsers = [];
-		this.usersToDisplay = this.users;
+		// Filter out the users that are already members of the project
+		this.usersToDisplay = this.users.filter(user => !this.members.some(member => member.id === user.id));
 	}
 	
 	

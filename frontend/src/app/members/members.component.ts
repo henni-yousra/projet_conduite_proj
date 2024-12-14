@@ -81,8 +81,8 @@ export class MembersComponent implements OnInit {
 		return user.id;
 	}
 
-	addSelectedMembers(): void {
-		this.selectedUsers = this.users.filter(user => user.selected);
+	async addSelectedMembers(): Promise<void> {
+		this.selectedUsers = this.usersToDisplay.filter(user => user.selected);
 		console.log('Selected Users:', this.selectedUsers);
 
 		// Ensure members is initialized as an array
@@ -92,7 +92,7 @@ export class MembersComponent implements OnInit {
 		}
 
 		if (this.project?.id !== undefined) {
-			this.reqSvc.addMembersToProject(this.project.id, this.selectedUsers)
+			await this.reqSvc.addMembersToProject(this.project.id, this.selectedUsers)
 				.then(async () => {
 					// Re-fetch members after adding
 					await this.reloadMembers();
@@ -105,13 +105,13 @@ export class MembersComponent implements OnInit {
 		);
 
 		// Reset the selected property and reset the selected users			
-		this.users.forEach(user => user.selected = false);
+		this.usersToDisplay.forEach(user => user.selected = false);
 		this.selectedUsers = [];
 		console.log('Selected Users reset:', this.selectedUsers);
 		console.log('Members :', this.members);
 	}
 
-	removeMembersFromProject(): void {
+	async removeMembersFromProject(): Promise<void> {
 		if (!this.project?.id || this.members.length === 0) {
 			console.log('No project or members to remove.');
 			return;
@@ -123,13 +123,16 @@ export class MembersComponent implements OnInit {
 			console.log('No members selected for removal.');
 			return;
 		}	
-		this.reqSvc.removeMembersFromProject(this.project.id, membersToRemove)
+		await this.reqSvc.removeMembersFromProject(this.project.id, membersToRemove)
 			.then(async () => {
 				await this.reloadMembers();
 			})
 			.catch(err => {
 				console.error('Error removing members:', err);
 			});
+		// add removed members back to the usersToDisplay array
+		membersToRemove.forEach(member => member.selected = false);
+		this.usersToDisplay = this.usersToDisplay.concat(membersToRemove);
 		console.log('Members after removal:', this.members);
 	}
 	

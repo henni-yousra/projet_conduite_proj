@@ -1,6 +1,5 @@
 package com.example.conduite.services;
 
-import org.json.simple.JSONArray;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,27 +101,6 @@ public class AppUserService {
         return false;  // Invalid credentials
     }
 
-    public List<AppUser> findAllById(String[] parts) {
-        JSONArray jsonArray = new JSONArray();
-        for (String part : parts) {
-            jsonArray.add(part);
-        }
-
-        List<Long> ids = new ArrayList<>();
-        for (Object obj : jsonArray) {
-            ids.add(Long.parseLong((String) obj));
-        }
-        
-        List<AppUser> users = new ArrayList<>();
-        for (Long id : ids) {
-            AppUser user = appUserRepo.findById(id).orElse(null);
-            if (user != null) {
-                users.add(user);
-            }
-        }
-
-        return users;
-    }
 
     public AppUser getAppUserById(Long id) {
         AppUser appUser = appUserRepo.getReferenceById(id);

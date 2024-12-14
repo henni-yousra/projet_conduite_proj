@@ -26,6 +26,7 @@ export class MembersComponent implements OnInit {
 	@Input() users: User[] = [];
 	project!: Project | null;
 	selectedUsers: User[] = [];
+	usersToDisplay : User[] = [];
 
 
 	constructor(private route: ActivatedRoute, private reqSvc: RequestService, private router: Router) { }
@@ -54,6 +55,7 @@ export class MembersComponent implements OnInit {
 		console.log('---Members:', this.members);
 	  
 		this.selectedUsers = [];
+		this.usersToDisplay = this.users;
 	}
 	
 	
@@ -97,12 +99,40 @@ export class MembersComponent implements OnInit {
 				});
 		}
 
-		// Reset the selected property and reset the selected users
+		// remove the selectedUsers from the usersToDisplay array 
+		this.usersToDisplay = this.usersToDisplay.filter(
+			user => !this.selectedUsers.includes(user)
+		);
+
+		// Reset the selected property and reset the selected users			
 		this.users.forEach(user => user.selected = false);
 		this.selectedUsers = [];
 		console.log('Selected Users reset:', this.selectedUsers);
 		console.log('Members :', this.members);
 	}
+
+	removeMembersFromProject(): void {
+		if (!this.project?.id || this.members.length === 0) {
+			console.log('No project or members to remove.');
+			return;
+		}
+		const membersToRemove = this.members.filter(member => member.selected);
+		console.log('Members to Remove:', membersToRemove);
+	
+		if (membersToRemove.length === 0) {
+			console.log('No members selected for removal.');
+			return;
+		}	
+		this.reqSvc.removeMembersFromProject(this.project.id, membersToRemove)
+			.then(async () => {
+				await this.reloadMembers();
+			})
+			.catch(err => {
+				console.error('Error removing members:', err);
+			});
+		console.log('Members after removal:', this.members);
+	}
+	
 
 	// Function to navigate back to the dashboard page
 	goBack() {

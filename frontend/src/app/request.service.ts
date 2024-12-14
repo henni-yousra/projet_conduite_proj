@@ -70,6 +70,12 @@ export class RequestService {
 				return { members: [] }; // Return an empty array of members in case of an error
 			});
 	}
+
+	async getUserProjects(userId: number): Promise<Project[]> {
+		const url = `/appusers/${userId}/projects`;
+		const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		return this.http.get<Project[]>(url).toPromise().then(projects => projects ?? []);
+	}
 	
 
 	async addMembersToProject(projectId: number, members: User[]): Promise<any> {
@@ -79,9 +85,15 @@ export class RequestService {
 		return this.http.post(url, members, { headers }).toPromise();
 	}
 
+	async removeMembersFromProject(projectId: number, members: User[]): Promise<any> {
+		const url = `/projects/${projectId}/removeMembers`;
+		const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		console.log("addMembersToProject : ", members);
+		return this.http.post(url, members, { headers }).toPromise();
+	}
+
 	async deleteProject(id: number): Promise<void> {
 		const url = `/projects/deleteProject/${id}`;
-		const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-		return this.http.delete<void>(url, { headers }).toPromise();
+    	return this.http.delete<void>(url).toPromise();
 	}
 }

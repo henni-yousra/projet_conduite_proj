@@ -90,11 +90,4 @@ public class MainController {
             return "error/404";
         }
     }
-
-    /* @PostMapping("/deleteProject/{id}")
-    @Transactional
-    public String deleteProject(@PathVariable Long id) {
-        projectController.deleteProject(id);
-        return "redirect:/";
-    } */
 }

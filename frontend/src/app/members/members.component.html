@@ -13,14 +13,14 @@
       </mat-card-header>
       <mat-card-content>
         <mat-grid-list cols="2" rowHeight="2:1">
-          <mat-grid-tile 
-            *ngFor="let member of members || []; trackBy: trackByMemberId" 
+          <mat-grid-tile *ngFor="let member of members; trackBy: trackByMemberId"
             [ngClass]="{'scrum-master': member.role === 'SCRUM_MASTER'}">
-            {{ member.name }}
+            <mat-checkbox [(ngModel)]="member.selected">{{ member.name }}</mat-checkbox>
           </mat-grid-tile>
         </mat-grid-list>
       </mat-card-content>
       <mat-card-footer class="card-footer">
+        <button mat-raised-button color="warn" (click)="removeMembersFromProject()">Remove Selected Members</button>
       </mat-card-footer>
     </mat-card>
 
@@ -33,7 +33,7 @@
       <mat-card-content>
         <mat-grid-list cols="2" rowHeight="2:1">
           <mat-grid-tile 
-            *ngFor="let user of users || []; trackBy: trackByUserId" 
+            *ngFor="let user of usersToDisplay || []; trackBy: trackByUserId" 
             [ngClass]="{'scrum-master': user.role === 'SCRUM_MASTER'}">
             <mat-checkbox [(ngModel)]="user.selected" aria-label="Select {{ user.name }}">{{ user.name }}</mat-checkbox>
           </mat-grid-tile>

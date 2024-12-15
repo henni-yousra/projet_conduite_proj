@@ -2,38 +2,22 @@ services:
   pgsql:
     container_name: pgsql
     image: postgres:latest
+    volumes: 
+      - ./backend/src/main/resources/sql/create.sql:/docker-entrypoint-initdb.d/create.sql
     environment:
-      - POSTGRES_PASSWORD=KokaBDAA
+      - POSTGRES_PASSWORD=
       - POSTGRES_USER=abdouldiallo
       - POSTGRES_DB=abdouldiallo
     ports:
       - "5432:5432"
 
-  back:
-    container_name: back
+  server:
+    container_name: server
     build:
-      context: backend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     ports:
       - "5000:5000"
-    # environment:
-    # volumes:
-    #   - ./api/src:/app/src
     depends_on:
       - pgsql
-
-  front:  
-    container_name: front
-    build: 
-      context: frontend
-      dockerfile: Dockerfile
-    ports:
-      - "4200:4200"
-    # environment:
-    # volumes:
-    #   - ./api/src:/app/src
-    depends_on:
-      - back
-
-# volumes:
-#   cdp:
+  
+  

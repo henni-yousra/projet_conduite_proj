@@ -1,0 +1,22 @@
+FROM maven
+WORKDIR /app
+# install node
+ENV NODE_VERSION=22
+RUN apt install -y curl
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+RUN . ~/.bashrc && nvm install ${NODE_VERSION}
+# build front
+COPY frontend/package*.json frontend/.
+COPY frontend/tsconfig*.json frontend/.
+COPY frontend/angular.json frontend/.
+COPY frontend/src frontend/src
+RUN . ~/.bashrc && cd frontend && npm install
+RUN . ~/.bashrc && cd frontend && npm run build
+
+COPY backend/pom.xml .
+COPY backend/src src
+# copy front build
+RUN mv frontend/dist/browser/* src/main/resources/static/
+RUN mvn compile
+EXPOSE 5000
+CMD ["mvn", "spring-boot:run"]

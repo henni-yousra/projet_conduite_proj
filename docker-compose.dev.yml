@@ -1,0 +1,30 @@
+services:
+  pgsql:
+    container_name: pgsql
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=KokaBDAA
+      - POSTGRES_USER=abdouldiallo
+      - POSTGRES_DB=abdouldiallo
+    ports:
+      - "5432:5432"
+
+  back:
+    container_name: back
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - pgsql
+
+  front:  
+    container_name: front
+    build: 
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    depends_on:
+      - back

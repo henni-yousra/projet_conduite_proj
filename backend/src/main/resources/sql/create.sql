@@ -44,12 +44,12 @@ CREATE TABLE dbConduiteProj.issue (
     issue_description VARCHAR(255)
 );
 
--- CREATE TABLE dbConduiteProj.issues (
---     id INT NOT NULL,
---     description VARCHAR(255),
---     name VARCHAR(255),
---     project_id INT NOT NULL
--- );
+CREATE TABLE dbConduiteProj.issues (
+    id INT NOT NULL,
+    description VARCHAR(255),
+    name VARCHAR(255),
+    project_id INT NOT NULL
+);
 
 CREATE TABLE dbConduiteProj.projectissues (
     project_id INT NOT NULL,

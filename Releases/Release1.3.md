@@ -8,12 +8,11 @@
 ### Fonctionnalités Backend
 - **Gestion des besoins et tâches** :
   - Ajout d’API pour la création, modification et suppression des besoins et des tâches.
-  - Sécurisation des services pour garantir un accès réservé aux membres de projet autorisés.
 
 ### Fonctionnalités Frontend
 - **Visualisation des besoins** :
-  - Développement du frontend pour afficher une liste interactive des besoins.
-  - Interface intuitive permettant aux utilisateurs de gérer les besoins de manière fluide.
+  - Développement du frontend pour afficher une liste des besoins.
+
 
 - **Visualisation des tâches** :
   - Intégration d’une interface dédiée pour la liste des tâches.

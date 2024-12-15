@@ -26,4 +26,6 @@ jobs:
       run: docker logs server
     - name: Test backend
       run: docker exec server mvn test
+    - name: Test frontend
+      run: docker exec server /bin/sh -c ". ~/.bashrc && cd frontend && npm run test"
 

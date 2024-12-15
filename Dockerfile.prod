@@ -6,11 +6,7 @@ RUN apt install -y curl
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 RUN . ~/.bashrc && nvm install ${NODE_VERSION}
 # build front
-COPY frontend/package*.json frontend/.
-COPY frontend/tsconfig*.json frontend/.
-COPY frontend/angular.json frontend/.
-RUN ls frontend
-COPY frontend/src/ frontend/src/
+COPY frontend frontend/.
 RUN ls frontend
 RUN . ~/.bashrc && cd frontend && npm install
 RUN . ~/.bashrc && cd frontend && npm run build

@@ -1,0 +1,64 @@
+/* Overall container for the documentation page */
+.documentation {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title style for the documentation section */
+  .documentation h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Style for the textarea */
+  .documentation textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* On focus, change the border color of the textarea */
+  .documentation textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+
+  
+  /* Section displaying the current documentation */
+  .documentation-display {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .documentation-display h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .documentation-display p {
+    font-size: 1rem;
+    color: #555;
+    white-space: pre-wrap; /* Preserve line breaks */
+    word-wrap: break-word;
+  }
+  

@@ -1,0 +1,14 @@
+<div class="documentation">
+    <h2>Documentation for Project </h2>
+    <textarea [(ngModel)]="documentationText" placeholder="Enter documentation here..."></textarea>
+
+    <br>
+    
+    <!-- Button to save the documentation -->
+    <button (click)="saveDocumentation()">Save</button>
+    
+    <div class="documentation-display">
+        <h3>Current Documentation</h3>
+        <p>{{documentationText}}</p>
+    </div>
+</div>

@@ -22,15 +22,14 @@
                     <a [routerLink]="['/tasks', project?.id]" routerLinkActive="active" class="nav-link">Tasks</a> <!-- link : projectId/tasks/issueId -->
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="" routerLinkActive="active" class="nav-link">Documentation</a>
+                    <a [routerLink]="['/documentation', project?.id]" routerLinkActive="active" class="nav-link">Documentation</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="" routerLinkActive="active" class="nav-link">Release</a>
+                    <a [routerLink]="['/release', project?.id]" routerLinkActive="active" class="nav-link">Release</a>
                 </li>
-                <li class ="nav-item">
-                    <a [routerLink]="" routerLinkActive="active" class="nav-link">Sprints</a>
+                <li class="nav-item">
+                    <a [routerLink]="['/sprints', project?.id]" routerLinkActive="active" class="nav-link">Sprints</a>
                 </li>
-                <li></li>
             </ul>
         </nav>
         <router-outlet></router-outlet>

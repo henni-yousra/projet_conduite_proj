@@ -69,6 +69,15 @@ CREATE TABLE dbConduiteProj.projectissues (
         FOREIGN KEY (project_id) REFERENCES dbConduiteProj.project(proj_id) ON DELETE CASCADE
    );
 
+
+CREATE TABLE documentation (
+    id SERIAL PRIMARY KEY,
+    project_id INT NOT NULL,
+    documentation_text TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
  	
 
 -- can later write sql queries to get the name of a project from the project table, by joining on the project name

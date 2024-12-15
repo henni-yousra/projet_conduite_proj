@@ -18,11 +18,13 @@ import { MembersComponent } from './members/members.component';
 import { RouterModule } from '@angular/router';
 import { IssuesComponent } from './issues/issues.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { DocumentationComponent } from './documentation/documentation.component';
 
 @NgModule({
   declarations: [
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    DocumentationComponent
   ],
   imports: [
     BrowserModule,

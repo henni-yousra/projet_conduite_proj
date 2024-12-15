@@ -75,20 +75,15 @@ export class IssuesComponent {
 		return issue.id;
 	}
 
-	async onTileClick(issue: { name: string, id: string, description: string }): Promise<void> {
+	async onTileClick(issue:IssueDialogData ): Promise<void> {
 		const dialogRef = this.dialog.open(IssueDialogComponent, {
-		  data: {
-			issueName: issue.name,
-			issueDescription: issue.description
-		  }
+		  data: {}
 		});
 	
 		dialogRef.afterClosed().subscribe(async (result: IssueDialogData) => {
 		  if (result) {
-			issue.name = result.issueName;
-			issue.description = result.issueDescription;
+			await this.reqSvc.addIssuesToProject(this.project?.id as number, this.issues);
 		  }
-		  await this.reqSvc.addIssuesToProject(this.project?.id as number, this.issues);
 		});
 	  }
 

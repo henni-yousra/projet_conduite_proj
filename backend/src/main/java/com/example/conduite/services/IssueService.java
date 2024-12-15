@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.conduite.entities.Issue;
 import com.example.conduite.repos.IssueRepo;
@@ -46,6 +47,6 @@ public class IssueService {
     public Issue getIssueById(@RequestParam Long id) {
         Issue issue = issueRepo.getReferenceById(id);
         System.out.println("Issue found: " + issue.getIssue_name());
-        return issue
+        return issue;
     }
 }

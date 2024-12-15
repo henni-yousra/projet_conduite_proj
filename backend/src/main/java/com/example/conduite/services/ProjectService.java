@@ -99,12 +99,12 @@ public class ProjectService {
     }
 
     public ResponseEntity<Map<String, Object>> getIssues(Long id) {
-        Issue issue = projectRepo.getReferenceById(id);
+        Project project = projectRepo.getReferenceById(id);
         System.out.println("Project ID: " + project.getId());
         Map<String, Object> response = new HashMap<>();
         ArrayList<Issue> issues = new ArrayList<>(project.projectIssues());
-        System.out.println("Issues of the project: " + members);
-        response.put("issues", members);
+        System.out.println("Issues of the project: " + issues);
+        response.put("issues", issues);
         return ResponseEntity.ok(response);
     }
 

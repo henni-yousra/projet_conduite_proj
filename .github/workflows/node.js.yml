@@ -31,5 +31,6 @@ jobs:
         cache: 'npm'
         cache-dependency-path: frontend
     - run: npm install
+    - run: npm run build
     - run: npm ci
     - run: npm test -- --watch=false --browsers=ChromeHeadless

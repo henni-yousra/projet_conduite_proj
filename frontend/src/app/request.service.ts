@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Project } from './model/project';
 import { User } from './model/user';
 import { catchError, lastValueFrom } from 'rxjs';
+import { IssueDialogComponent, IssueDialogData } from './issue-dialog/issue-dialog.component';
+
 
 @Injectable({
 	providedIn: 'root'
@@ -97,9 +99,25 @@ export class RequestService {
     	return this.http.delete<void>(url).toPromise();
 	}
 
-	/* async addIssuesToProject(projectId: number, issues: any): Promise<any> {
+
+	async getIssues(projectId: number): Promise<{ issues: IssueDialogData[] }> {
+		const url = `/projects/${projectId}/getIssues`;
+		console.log(`Fetching issues for project ID: ${projectId}, URL: ${url}`);
+		return this.http.get<{ issues: IssueDialogData[] }>(url).toPromise()
+			.then(response => {
+				console.log('Fetched Issues:', response);
+				return response ?? { issues: [] }; 
+			})
+			.catch(error => {
+				console.error('Error fetching issues:', error);
+				return { issues: [] }; 
+			});
+	}
+
+	async addIssuesToProject(projectId: number, issues: any): Promise<any> {
 		const url = `/projects/${projectId}/addIssues`;
 		const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		console.log("addIssuesToProject : ", issues);
 		return this.http.post(url, issues, { headers }).toPromise();
-	} */
+	}
 }

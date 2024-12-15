@@ -91,6 +91,11 @@ public class ProjectController {
         return projectService.deleteProject(id);
     }
 
+    @GetMapping("/{id}/getIssues")
+    public ResponseEntity<Map<String, Object>> getIssues(@PathVariable Long id) {
+        return projectService.getIssues(id);
+    }
+
     @PostMapping("/{id}/addIssues")
     public ResponseEntity<Map<String, String>> addIssues(@PathVariable Long id, @RequestBody List<Issue> issues) {
         return projectService.addIssuesToProject(id, issues);

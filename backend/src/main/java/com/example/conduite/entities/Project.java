@@ -1,6 +1,7 @@
 package com.example.conduite.entities;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -23,7 +24,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "proj_id")
-    private int id;
+    private Long id;
 
     @Column(name = "projname")
     private String name;
@@ -39,7 +40,17 @@ public class Project {
     )
     //@JsonIgnore // Prevents cyclic serialization, because there is a circular reference between Project and AppUser; Projects in AppUser and AppUsers in Project
     @JsonManagedReference
-    private List<AppUser> members;  // List of users assigned to the project
+    private List<AppUser> members = new ArrayList<>();  // List of users assigned to the project
+
+
+    //issues
+    @ManyToMany
+    @JoinTable(
+        name = "projectissues",
+        joinColumns = @JoinColumn(name = "project_id"),
+        inverseJoinColumns = @JoinColumn(name = "issue_id")
+    )
+    private List<Issue> issues = new ArrayList<>();
 
     /* TODO :
      * Issues
@@ -59,7 +70,11 @@ public class Project {
         this.description = description;
     }
 
-    public int getId() {
+    public void setId(Long idToSet){
+        this.id = idToSet;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -72,7 +87,7 @@ public class Project {
     }
 
     public List<AppUser> projectMembers() {
-        return members;
+        return new ArrayList<>(this.members);
     }
     
     public void addMembers(List<AppUser> users) {
@@ -81,6 +96,14 @@ public class Project {
 
     public void removeMembers(List<AppUser> users) {
         members.removeAll(users);
+    }
+
+    public void addIssues(List<Issue> issues) {
+        this.issues.addAll(issues);
+    }
+
+    public void removeIssues(List<Issue> issues) {
+        this.issues.removeAll(issues);
     }
 
     public void setName(String name) {

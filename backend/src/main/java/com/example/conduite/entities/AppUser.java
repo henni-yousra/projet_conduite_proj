@@ -19,12 +19,6 @@ import lombok.Data;
 @Data
 @Table(name = "appuser", schema = "dbconduiteproj")
 public class AppUser {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_seq")
-    //@SequenceGenerator(name = "appuser_seq", sequenceName = "appuser_seq", allocationSize = 1)
-    //@GeneratedValue(strategy = GenerationType.IDENTITY) 
-    //@Column(name = "user_id")
-    //private int id;
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
@@ -54,6 +48,10 @@ public class AppUser {
         this.email = email;
         this.role = role;
         this.password = password;
+    }
+
+    public void setId(Long idToSet){
+        this.id = idToSet;
     }
 
     public Long getId() {

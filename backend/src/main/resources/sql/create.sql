@@ -56,6 +56,19 @@ CREATE TABLE dbConduiteProj.projectissues (
     issue_id INT NOT NULL
 );
 
+-- Tasks Table
+    CREATE TABLE dbConduiteProj.tasks(
+        task_id SERIAL PRIMARY KEY,
+        issue_id INT NOT NULL,  
+        project_id INT NOT NULL, 
+        description VARCHAR(255) NOT NULL,
+        dod VARCHAR(255) NOT NULL,
+        state VARCHAR(20) CHECK(state IN ('to do', 'doing', 'done')) NOT NULL,
+        dependency VARCHAR(255),
+        FOREIGN KEY (issue_id) REFERENCES dbConduiteProj.issues(issue_id) ON DELETE CASCADE,
+        FOREIGN KEY (project_id) REFERENCES dbConduiteProj.project(proj_id) ON DELETE CASCADE
+   );
+
  	
 
 -- can later write sql queries to get the name of a project from the project table, by joining on the project name

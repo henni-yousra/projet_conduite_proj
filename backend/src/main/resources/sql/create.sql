@@ -9,10 +9,8 @@ CREATE TABLE dbConduiteProj.appuser(
     user_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    role varchar(10) constraint role_check check (role in ('chef', 'prog')) NOT NULL default 'prog'
+    userrole varchar(20) constraint role_check check (userrole in ('SCRUM_MASTER', 'MEMBER')) NOT NULL default 'MEMBER'
 );
-
 
 CREATE TABLE dbConduiteProj.project (
     proj_id SERIAL PRIMARY KEY,
@@ -34,13 +32,31 @@ CREATE TABLE dbConduiteProj.project_members_list (
 CREATE TABLE dbConduiteProj.projectmembers (
     project_id INT NOT NULL,
     user_id INT NOT NULL,
-    role VARCHAR(20) CHECK(role IN ('chef', 'prog')) NOT NULL,
+    role VARCHAR(20) CHECK(role IN ('SCRUM_MASTER', 'MEMBER')) NOT NULL,
     PRIMARY KEY (project_id, user_id),
     FOREIGN KEY (project_id) REFERENCES dbConduiteProj.project(proj_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES dbConduiteProj.appuser(user_id) ON DELETE CASCADE
 );
 
+CREATE TABLE dbConduiteProj.issue (
+    issue_id INT NOT NULL,
+    issue_name VARCHAR(255),
+    issue_description VARCHAR(255)
+);
 
+-- CREATE TABLE dbConduiteProj.issues (
+--     id INT NOT NULL,
+--     description VARCHAR(255),
+--     name VARCHAR(255),
+--     project_id INT NOT NULL
+-- );
+
+CREATE TABLE dbConduiteProj.projectissues (
+    project_id INT NOT NULL,
+    issue_id INT NOT NULL
+);
+
+ 	
 
 -- can later write sql queries to get the name of a project from the project table, by joining on the project name
 --ALTER TABLE dbConduiteProj.appuser ADD project varchar constraint fk_proj references dbConduiteProj.project(proj_id);

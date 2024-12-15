@@ -98,6 +98,10 @@ public class Project {
         members.removeAll(users);
     }
 
+    public List<Issue> projectIssues() {
+        return new ArrayList<>(this.issues);
+    }
+
     public void addIssues(List<Issue> issues) {
         this.issues.addAll(issues);
     }

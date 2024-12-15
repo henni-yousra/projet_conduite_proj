@@ -15,10 +15,9 @@ import { Router } from '@angular/router';
 
 
 export interface IssueDialogData {
-  issueName: string;
   issueId: string; // US1 ...
+  issueName: string;
   issueDescription: string;
-  projId: number;
 }
 
 
@@ -61,6 +60,6 @@ export class IssueDialogComponent {
     // TODO : clicking on "Tasks" from the issue dialog should navigate to the tasks page
   navigateToTasks(): void {
     this.dialogRef.close();
-    this.router.navigate([this.data.projId,'/tasks', this.data.issueId]);
+    //this.router.navigate([this.data.projId,'/tasks', this.data.issueId]);
   }
 }

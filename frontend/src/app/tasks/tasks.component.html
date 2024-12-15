@@ -1,28 +1,49 @@
 <main class="main">
-    <div class="tasks-container">
-      <h1>Tasks</h1>
-      <div class="content">
-        <p>Manage the tasks related to ISSUE_NAME of the {{project?.name}} project</p>
-        <p>Issue description</p>
-      </div>
-  
-      <button mat-raised-button color="primary" (click)="openCreateTaskDialog()">Add Task</button>
-  
-      <mat-card class="card" appearance="outlined">
-        <mat-card-header>
-          <mat-card-title>Issue tasks</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-grid-list cols="2" rowHeight="2:1">
-            <mat-grid-tile *ngFor="let task of tasks; trackBy: trackById" (click)="onTileClick(task)">
-              {{task.name}}, {{task.id}}
-            </mat-grid-tile>
-          </mat-grid-list>
-        </mat-card-content>
-        <mat-card-footer class="card-footer">
-        </mat-card-footer>
-      </mat-card>
-  
-      <button class="back-dashboard-btn" (click)="goBack()">Back</button>
+  <div class="tasks-container">
+    <!-- Title and Description -->
+    <h1>Tasks</h1>
+    <div class="content">
+      <p>Manage the tasks related to <strong>ISSUE_NAME</strong> of the {{ project?.name }} project</p>
+      <p>Issue description</p>
     </div>
-  </main>
+
+    <!-- Add Task Button -->
+    <button mat-raised-button color="primary" (click)="openCreateTaskDialog()">Add Task</button>
+
+    <!-- Tasks Table -->
+    <div class="table-container">
+      <table class="tasks-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks; trackBy: trackById" (click)="onTileClick(task)">
+            <td>{{ task.name }}</td>
+            <td>{{ task.id }}</td>
+            <td>{{ task.description }}</td>
+            
+            <td>
+              <!-- Edit Button -->
+              <button mat-icon-button color="primary" (click)="onTileClick(task)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <!-- Delete Button 
+              <button mat-icon-button color="warn" (click)="onDeleteTask(task.id, $event)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Back Button -->
+    <button class="back-dashboard-btn" (click)="goBack()">Back</button>
+  </div>
+</main>

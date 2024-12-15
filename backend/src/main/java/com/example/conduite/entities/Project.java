@@ -70,6 +70,8 @@ public class Project {
         this.description = description;
     }
 
+
+
     public void setId(Long idToSet){
         this.id = idToSet;
     }
@@ -117,4 +119,9 @@ public class Project {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public List<Issue> getIssues(){
+        return this.issues;
+    }
+
 }

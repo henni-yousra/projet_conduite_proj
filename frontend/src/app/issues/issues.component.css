@@ -5,3 +5,53 @@
     justify-content: flex-start;
     padding: 2rem;
 }
+.issues-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    gap: 1rem;
+  }
+  
+  .issues-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .issues-table th,
+  .issues-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .issues-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .issues-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  .issues-table button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  button.back-dashboard-btn {
+    margin-top: 1rem;
+    background-color: #6c757d;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  button.back-dashboard-btn:hover {
+    background-color: #5a6268;
+  }
+  

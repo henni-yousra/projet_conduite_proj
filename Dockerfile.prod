@@ -9,7 +9,9 @@ RUN . ~/.bashrc && nvm install ${NODE_VERSION}
 COPY frontend/package*.json frontend/.
 COPY frontend/tsconfig*.json frontend/.
 COPY frontend/angular.json frontend/.
-COPY frontend/src frontend/src
+RUN ls frontend
+COPY frontend/src/ frontend/src/
+RUN ls frontend
 RUN . ~/.bashrc && cd frontend && npm install
 RUN . ~/.bashrc && cd frontend && npm run build
 

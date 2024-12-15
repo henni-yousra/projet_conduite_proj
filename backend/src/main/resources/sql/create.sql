@@ -39,17 +39,17 @@ CREATE TABLE dbConduiteProj.projectmembers (
 );
 
 CREATE TABLE dbConduiteProj.issue (
-    issue_id INT NOT NULL,
+    issue_id SERIAL PRIMARY KEY,
     issue_name VARCHAR(255),
     issue_description VARCHAR(255)
 );
 
-CREATE TABLE dbConduiteProj.issues (
-    id INT NOT NULL,
-    description VARCHAR(255),
-    name VARCHAR(255),
-    project_id INT NOT NULL
-);
+-- CREATE TABLE dbConduiteProj.issues (
+--     id INT NOT NULL,
+--     description VARCHAR(255),
+--     name VARCHAR(255),
+--     project_id INT NOT NULL
+-- );
 
 CREATE TABLE dbConduiteProj.projectissues (
     project_id INT NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE dbConduiteProj.projectissues (
         dod VARCHAR(255) NOT NULL,
         state VARCHAR(20) CHECK(state IN ('to do', 'doing', 'done')) NOT NULL,
         dependency VARCHAR(255),
-        FOREIGN KEY (issue_id) REFERENCES dbConduiteProj.issues(issue_id) ON DELETE CASCADE,
+        FOREIGN KEY (issue_id) REFERENCES dbConduiteProj.issue(issue_id) ON DELETE CASCADE,
         FOREIGN KEY (project_id) REFERENCES dbConduiteProj.project(proj_id) ON DELETE CASCADE
    );
 

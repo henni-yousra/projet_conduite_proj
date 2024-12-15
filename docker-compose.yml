@@ -5,7 +5,7 @@ services:
     volumes: 
       - ./backend/src/main/resources/sql/create.sql:/docker-entrypoint-initdb.d/create.sql
     environment:
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=KokaBDAA
       - POSTGRES_USER=abdouldiallo
       - POSTGRES_DB=abdouldiallo
     ports:

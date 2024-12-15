@@ -1,0 +1,31 @@
+name: Docker Compose CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: prune
+      run: docker system prune -a
+    - name: Build the docker-compose stack
+      run: docker compose up -d
+    - name: Check running containers
+      run: docker ps -a
+    - name: Check logs db
+      run: docker logs pgsql
+    - name: Check logs server
+      run: docker logs server
+    - name: Test backend
+      run: docker exec server mvn test
+    # - name: Test frontend
+    #   run: docker exec server /bin/sh -c ". ~/.bashrc && cd frontend && npm run test"
+

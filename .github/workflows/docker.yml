@@ -20,7 +20,9 @@ jobs:
       run: docker compose up --build
     - name: Check running containers
       run: docker ps -a
-    - name: Check logs
+    - name: Check logs db
+      run: docker logs pgsql
+    - name: Check logs server
       run: docker logs server
     - name: Test backend
       run: docker exec server mvn test

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.conduite.entities.AppUser;
+import com.example.conduite.entities.Issue;
 import com.example.conduite.entities.Project;
 import com.example.conduite.repos.ProjectRepo;
 import com.example.conduite.services.ProjectService;
@@ -88,5 +89,10 @@ public class ProjectController {
     @Transactional
     public ResponseEntity<Map<String, String>> deleteProject(@PathVariable Long id) {
         return projectService.deleteProject(id);
+    }
+
+    @PostMapping("/{id}/addIssues")
+    public ResponseEntity<Map<String, String>> addIssues(@PathVariable Long id, @RequestBody List<Issue> issues) {
+        return projectService.addIssuesToProject(id, issues);
     }
 }

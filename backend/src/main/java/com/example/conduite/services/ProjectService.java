@@ -10,8 +10,10 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.conduite.entities.AppUser;
+import com.example.conduite.entities.Issue;
 import com.example.conduite.entities.Project;
 import com.example.conduite.repos.ProjectRepo;
 
@@ -39,6 +41,11 @@ public class ProjectService {
         Project project = new Project(name, description);
         projectRepo.save(project);
         return project;
+    }
+
+    @Transactional
+    public void clearTable() {
+        projectRepo.deleteAll();
     }
 
     public ResponseEntity<Map<String, Object>> getMembers(Long id) {
@@ -88,6 +95,21 @@ public class ProjectService {
         System.out.println("Deleting project with ID: " + id);
         projectRepo.deleteById(id);
         response.put("message", "Project deleted successfully.");
+        return ResponseEntity.ok(response);
+    }
+
+    public ResponseEntity<Map<String, String>> addIssuesToProject(Long id,List<Issue> issues) {
+        System.out.println("Adding issues to the project...");
+        Map<String, String> response = new HashMap<>();
+        Project project = projectRepo.getReferenceById(id);
+        // append this list to the project's issues list
+        project.addIssues(issues);
+        System.out.println("Issues to add to the project: " + issues);
+        System.out.println("Project ID: " + project.getId());
+        //saves the modified project to the database
+        //because of @ManyToMany @JoinTable
+        projectRepo.save(project);
+        response.put("message", "Issues added successfully.");
         return ResponseEntity.ok(response);
     }
 }

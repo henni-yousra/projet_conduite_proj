@@ -76,7 +76,7 @@ export class IssuesComponent {
 		return issue.id;
 	}
 
-	onTileClick(issue: { name: string, id: string, description: string }): void {
+	async onTileClick(issue: { name: string, id: string, description: string }): Promise<void> {
 		const dialogRef = this.dialog.open(IssueDialogComponent, {
 		  data: {
 			issueName: issue.name,
@@ -84,11 +84,12 @@ export class IssuesComponent {
 		  }
 		});
 	
-		dialogRef.afterClosed().subscribe((result: IssueDialogData) => {
+		dialogRef.afterClosed().subscribe(async (result: IssueDialogData) => {
 		  if (result) {
 			issue.name = result.issueName;
 			issue.description = result.issueDescription;
 		  }
+		  //await this.reqSvc.addIssuesToProject(this.project?.id as number, this.issues);
 		});
 	  }
 

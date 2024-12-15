@@ -96,4 +96,10 @@ export class RequestService {
 		const url = `/projects/deleteProject/${id}`;
     	return this.http.delete<void>(url).toPromise();
 	}
+
+	/* async addIssuesToProject(projectId: number, issues: any): Promise<any> {
+		const url = `/projects/${projectId}/addIssues`;
+		const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		return this.http.post(url, issues, { headers }).toPromise();
+	} */
 }

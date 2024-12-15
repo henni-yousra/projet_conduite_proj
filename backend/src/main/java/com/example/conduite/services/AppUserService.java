@@ -41,8 +41,9 @@ public class AppUserService {
 
     @Transactional
     public void clearTable() {
-        String sql = "DELETE FROM dbConduiteProj.appuser";
-        jdbcTemplate.update(sql);
+        appUserRepo.deleteAll();
+        /* String sql = "DELETE FROM dbConduiteProj.appuser";
+        jdbcTemplate.update(sql); */
     }
 
     public List<AppUser> getAllAppUsers() {
@@ -54,23 +55,6 @@ public class AppUserService {
         AppUser appUser = new AppUser(name,email, role, password);
         appUserRepo.save(appUser);
         return appUser;
-    }
-
-    @Transactional
-    public void addPersonToDatabase(String name, String email, String role, String password) {
-        System.out.println("Adding a new person to the table...");
-        
-        // Check if the email already exists in the database
-        if (emailExists(email)) {
-            System.out.println("Error: Email already exists in the database.");
-            return;  // Prevent adding the person if email exists
-        }
-        
-        String sql = "INSERT INTO dbConduiteProj.appuser (name, email, role) VALUES (?,?,?)";
-        
-        // Execute the insert query
-        jdbcTemplate.update(sql, name, email, role, password);
-        System.out.println("Person added to the database: Name - " + name + ", Email - " + email + ", Role - " + role + ", Password - " + password);
     }
 
     @Transactional
@@ -86,7 +70,7 @@ public class AppUserService {
     }
 
     // Check if email exists in the database
-    private boolean emailExists(String email) {
+    public boolean emailExists(String email) {
         return appUserRepo.findByEmail(email) != null;
     }
 

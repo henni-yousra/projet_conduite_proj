@@ -11,7 +11,7 @@
     $ mvn clean install
     $ mvn spring-boot:run
 
-le back est lancé en local sur le port 5000, et est accessible avec un navigateur à l'adresse localhost:5000.
+le back est lancé en local sur le port 5000, et est accessible avec un navigateur à l'adresse <localhost:5000>.
 
 # Frontend
 
@@ -20,7 +20,12 @@ le back est lancé en local sur le port 5000, et est accessible avec un navigate
 
 l'app angular est lancée sur le port 42OO
 
+## Docker
+```
+sudo docker compose up
+```
 
+<localhost:5000/index.html>
 
 ### Diagrammes
 
@@ -44,4 +49,3 @@ Ce rôle regroupe tous les membres d'un projet qui ne sont pas chefs de projet. 
 
 
 ![Diagramme de rôles](/assests/Maquettes%20CDP-3.jpg)
-

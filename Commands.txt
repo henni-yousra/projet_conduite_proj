@@ -6,3 +6,8 @@ FOR SpringBoot, after going down into backend :
 
 FOR Angular, after going down into frontend :
 npx ng serve
+
+Docker compose:
+sudo docker compose up
+
+access merged front at localhost:5000/index.html
